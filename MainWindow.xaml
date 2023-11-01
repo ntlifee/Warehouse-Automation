@@ -7,11 +7,11 @@
         mc:Ignorable="d"
         Title="WarehouseAutomation" Height="700" Width="1100" WindowStartupLocation="CenterScreen" 
         MinHeight="700" MinWidth="1100" WindowStyle="None" ResizeMode="NoResize">
-    <Border Background="#FF1F1F1F" BorderBrush="Black" BorderThickness="0.4" MouseDown="WindowMove">
+    <Border Background="#FF696969" BorderBrush="#FF696969" BorderThickness="2" MouseDown="WindowMove">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="20*"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="660"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <TextBlock HorizontalAlignment="Left" Foreground="White" Text="WarehouseAutomation" Margin="10"/>
@@ -21,7 +21,26 @@
                     <Button x:Name="ButtonClose" Content="X" HorizontalAlignment="Left" VerticalAlignment="Center"
                             Height="20" Width="20" Margin="5,0,5,0" Background="White" Click="ButtonClose_Click"/>
                 </StackPanel>
-            </Grid>            
+            </Grid>
+            <Grid Grid.Row="1" Background="#FF292727">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="800"/>
+                    <ColumnDefinition Width="300"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" BorderBrush="#FF696969" BorderThickness="0 0 2 2" >
+                    
+                </Border>
+                <Grid Grid.Column="1">
+                    <StackPanel>
+                        <TextBlock Text="Моделирование" Foreground="White" HorizontalAlignment="Center" 
+                                   Margin="0 10" FontSize="15"/>
+                        <StackPanel Orientation="Horizontal">
+                            
+                        </StackPanel>
+                       
+                    </StackPanel>
+                </Grid>
+            </Grid>
         </Grid>
     </Border>
 </Window>
