@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace WarehouseAutomation.MVVM.View
 {
     /// <summary>
-    /// Логика взаимодействия для UserControlSettings.xaml
+    /// Логика взаимодействия для UserControlAdmin.xaml
     /// </summary>
-    public partial class UserControlSettings : UserControl
+    public partial class UserControlAdmin : UserControl
     {
-        public UserControlSettings()
+        public UserControlAdmin()
         {
             InitializeComponent();
         }

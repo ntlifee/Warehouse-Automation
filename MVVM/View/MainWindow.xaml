@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WarehouseAutomation"
+        xmlns:local="clr-namespace:WarehouseAutomation" xmlns:view="clr-namespace:WarehouseAutomation.MVVM.View"
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -14,47 +14,84 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         Title="WarehouseAutomation" Height="700" Width="1100" WindowStartupLocation="CenterScreen" 
         MinHeight="700" MinWidth="1100" WindowStyle="None" ResizeMode="NoResize">
-        <Border Background="#FF696969" BorderBrush="#FF696969" BorderThickness="2" MouseDown="WindowMove">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition Height="660"/>
-                </Grid.RowDefinitions>
-                
-                <Grid Grid.Row="0">
-                    <TextBlock HorizontalAlignment="Left" Foreground="White" Text="WarehouseAutomation" Margin="10"/>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button x:Name="ButtonCollapse" Content="-" HorizontalAlignment="Left" VerticalAlignment="Center"
-                                Height="20" Width="20" Margin="5,0,5,0" Background="White" Click="ButtonCollapse_Click"/>
-                        <Button x:Name="ButtonClose" Content="X" HorizontalAlignment="Left" VerticalAlignment="Center"
-                                Height="20" Width="20" Margin="5,0,5,0" Background="White" Click="ButtonClose_Click"/>
-                    </StackPanel>
-                </Grid>
-                
-                <Grid Grid.Row="1" Background="#FF292727">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="800"/>
-                        <ColumnDefinition Width="300"/>
-                    </Grid.ColumnDefinitions>
-                    
-                    <Border Grid.Column="0" BorderBrush="#FF696969" BorderThickness="0 0 2 2" />
+    <Border Background="#FF696969" BorderBrush="#FF696969" BorderThickness="2">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="660"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" MouseDown="WindowMove" Background="Gray">
+                <TextBlock HorizontalAlignment="Left" Foreground="White" Text="WarehouseAutomation" Margin="10"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="ButtonCollapse" Content="-" HorizontalAlignment="Left" VerticalAlignment="Center"
+                                Margin="5,0,5,0" Click="ButtonCollapse_Click" Style="{DynamicResource DefaultButtonStyle}"/>
+                    <Button x:Name="ButtonClose" Content="X" HorizontalAlignment="Left" VerticalAlignment="Center"
+                                Margin="5,0,5,0" Click="ButtonClose_Click" Style="{DynamicResource DefaultButtonStyle}"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="1" Background="#FF292727">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="800"/>
+                    <ColumnDefinition Width="300"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" BorderBrush="#FF696969" BorderThickness="0 0 2 2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="610"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="400"/>
+                                <ColumnDefinition Width="400"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" >
+                                <Button Command="{Binding ButtonSetting}" Content="Настройки" HorizontalAlignment="Right" Width="100" Height="30"
+                                    Margin="0 0 10 0" VerticalAlignment="Center" Style="{DynamicResource DefaultButtonStyle}"/>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <Button Command="{Binding ButtonAdmin}" Content="Зав. складом" HorizontalAlignment="Left" Width="100" Height="30"
+                                    Margin="10 0 0 0" VerticalAlignment="Center" Style="{DynamicResource DefaultButtonStyle}"/>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="1" Width="790" Height="600" Margin="5 5 5 10">
+                            <view:UserControlSettings Visibility="Visible"/>
+                            <view:UserControlAdmin Visibility="Hidden"/>
+                        </Grid>
+                    </Grid>                    
+                </Border>
 
                 <Grid Grid.Column="1">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="50"/>                            
-                            </Grid.RowDefinitions>
-                            <StackPanel Grid.Row="0">
-                                <TextBlock Text="Моделирование" Foreground="White" HorizontalAlignment="Center" 
-                                Margin="0 10" FontSize="15"/>
-                                <StackPanel Orientation="Horizontal">
-
-                                </StackPanel>
-                            </StackPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <TextBlock Text="Моделирование" Foreground="White" HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" FontSize="15"/>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="150"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Button x:Name="ButtonStartSimul" Content="Старт" HorizontalAlignment="Right" Width="50"
+                                    Margin="0 0 10 0" VerticalAlignment="Center" Style="{DynamicResource DefaultButtonStyle}"/>
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <Button x:Name="ButtonStopSimul" Content="Стоп" HorizontalAlignment="Left" Width="50"
+                                    Margin="10 0 0 0" VerticalAlignment="Center" Style="{DynamicResource DefaultButtonStyle}"/>
+                            </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
                 
             </Grid>
-        </Border>
+        </Grid>
+    </Border>
 </Window>
