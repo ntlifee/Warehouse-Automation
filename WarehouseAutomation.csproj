@@ -85,6 +85,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MVVM\View\UserControlApplications.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\View\UserControlSettings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -95,6 +99,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MVVM\View\UserControlApplications.xaml.cs">
+      <DependentUpon>UserControlApplications.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\View\UserControlSettings.xaml.cs">
       <DependentUpon>UserControlSettings.xaml</DependentUpon>
     </Compile>

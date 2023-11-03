@@ -53,15 +53,19 @@
                                     Margin="0 0 10 0" VerticalAlignment="Center" Style="{DynamicResource DefaultButtonStyle}"/>
                             </Grid>
                             <Grid Grid.Column="1">
-                                <Button Command="{Binding ButtonAdmin}" Content="Зав. складом" HorizontalAlignment="Left" Width="100" Height="30"
-                                    Margin="10 0 0 0" VerticalAlignment="Center" Style="{DynamicResource DefaultButtonStyle}"/>
+                                <TextBlock Text="Зав. складом:" Foreground ="White" Padding="8"  HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Center" Height="30" Width="100"/>
+                                <Button Command="{Binding ButtonHaracteris}" Content="Название1" HorizontalAlignment="Left" Width="100" Height="30"
+                                   Margin="120,0,0,0" VerticalAlignment="Center" Style="{DynamicResource DefaultButtonStyle}"/>
+                                <Button Command="{Binding ButtonApplications}" Content="Название2" HorizontalAlignment="Left" Width="100" Height="30"
+                                    Margin="230,0,0,0" VerticalAlignment="Center" Style="{DynamicResource DefaultButtonStyle}"/>
                             </Grid>
                         </Grid>
                         <Grid Grid.Row="1" Width="790" Height="600" Margin="5 5 5 10">
                             <view:UserControlSettings Visibility="Visible"/>
                             <view:UserControlAdmin Visibility="Hidden"/>
+                            <view:UserControlApplications Visibility="Hidden"/>
                         </Grid>
-                    </Grid>                    
+                    </Grid>
                 </Border>
 
                 <Grid Grid.Column="1">
@@ -84,13 +88,14 @@
                                     Margin="0 0 10 0" VerticalAlignment="Center" Style="{DynamicResource DefaultButtonStyle}"/>
                             </Grid>
                             <Grid Grid.Column="2">
+
                                 <Button x:Name="ButtonStopSimul" Content="Стоп" HorizontalAlignment="Left" Width="50"
                                     Margin="10 0 0 0" VerticalAlignment="Center" Style="{DynamicResource DefaultButtonStyle}"/>
                             </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
-                
+
             </Grid>
         </Grid>
     </Border>
