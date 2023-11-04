@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WarehouseAutomation" xmlns:view="clr-namespace:WarehouseAutomation.MVVM.View"
+        xmlns:local="clr-namespace:WarehouseAutomation"
+        xmlns:view="clr-namespace:WarehouseAutomation.MVVM.View"
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -53,7 +54,7 @@
                                     Margin="0 0 10 0" VerticalAlignment="Center" Style="{DynamicResource DefaultButtonStyle}"/>
                             </Grid>
                             <Grid Grid.Column="1">
-                                <TextBlock Text="Зав. складом:" Foreground ="White" Padding="8"  HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Center" Height="30" Width="100"/>
+                                <TextBlock Text="Зав. складом:" Foreground ="White" Padding="8"  HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="NoWrap"  VerticalAlignment="Center" Height="30" Width="100"/>
                                 <Button Command="{Binding ButtonHaracteris}" Content="Название1" HorizontalAlignment="Left" Width="100" Height="30"
                                    Margin="120,0,0,0" VerticalAlignment="Center" Style="{DynamicResource DefaultButtonStyle}"/>
                                 <Button Command="{Binding ButtonApplications}" Content="Название2" HorizontalAlignment="Left" Width="100" Height="30"
@@ -61,8 +62,8 @@
                             </Grid>
                         </Grid>
                         <Grid Grid.Row="1" Width="790" Height="600" Margin="5 5 5 10">
-                            <view:UserControlSettings Visibility="Visible"/>
-                            <view:UserControlAdmin Visibility="Hidden"/>
+                            <view:UserControlSettings Visibility="Hidden"/>
+                            <view:UserControlAdmin Visibility="Visible"/>
                             <view:UserControlApplications Visibility="Hidden"/>
                         </Grid>
                     </Grid>

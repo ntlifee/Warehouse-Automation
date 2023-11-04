@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WarehouseAutomation.MVVM.View"
              mc:Ignorable="d" 
              Height="600" Width="790">
-    <Grid>
+    <Grid >
             
     </Grid>
 </UserControl>
