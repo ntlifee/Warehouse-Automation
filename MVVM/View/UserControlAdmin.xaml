@@ -12,12 +12,20 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Border Grid.Column="0" Padding="20">
+        <Border Grid.Column="0" Padding="20">            
             <StackPanel>
                 <TextBlock Text="Вид товара" Foreground ="White" FontSize="15" Padding="0 4 4 4 "/>
-                <TextBox x:Name="TypeProduct"  Padding="4" IsReadOnly="True" Foreground ="White" FontSize="15"/>
+                <TextBox x:Name="TypeProduct"  Padding="4" Foreground ="White" FontSize="15"/>
+
                 <TextBlock Text="Оптовых упаковок" Foreground ="White" FontSize="15"  Padding="0 4 4 4 "/>
-                <TextBox x:Name ="Packaging"  Padding="4" IsReadOnly="True" Foreground ="White" FontSize="15"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name ="Packaging"  Width="250" Padding="4" IsReadOnly="True" Foreground ="White" FontSize="15"/>
+                    <StackPanel Orientation="Vertical" >
+                        <Button Style="{DynamicResource DefaultButtonStyle}"/>
+                        <Button Style="{DynamicResource DefaultButtonStyle}"/>
+                    </StackPanel>
+                </StackPanel>
+               
                 <TextBlock Text="Кол-во в упоковке" Foreground ="White" FontSize="15"  Padding="0 4 4 4 "/>
                 <TextBox x:Name="QuantityPackaging"  Padding="4" IsReadOnly="True" Foreground ="White" FontSize="15"/>
                 <TextBlock Text="Размер упоковки" Foreground ="White" FontSize="15" Padding="0 4 4 4 " />
@@ -35,8 +43,6 @@
                 <TextBlock Text="Новая цена" Foreground ="White" FontSize="15"  Padding="0 4 4 4 "/>
                 <TextBox x:Name ="NewPrice"  Padding="4" IsReadOnly="True"/>
             </StackPanel>
-        </Border>
-
-        
+        </Border>        
     </Grid>
 </UserControl>

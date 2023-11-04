@@ -7,6 +7,35 @@
              mc:Ignorable="d" 
              Height="600" Width="790">
     <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="1" Padding="20">
             
+        </Border>
+        <Border Grid.Column="0" Padding="20">
+            <StackPanel>
+                <TextBlock Text="Введите количество видов продуктов:" Foreground ="White" FontSize="15" Padding="0 4 4 4 "/>
+                <TextBox x:Name="TypeP"  Padding="4" Foreground ="White" FontSize="15"/>
+                <TextBlock Text="Введите количество обслуживающих магазинов:" Foreground ="White" FontSize="15"  Padding="0 4 4 4 "/>
+                <TextBox x:Name ="NewPrice"  Padding="4" IsReadOnly="True"/>
+                <TextBlock Text="Введите количество дней моделировани я:" Foreground ="White" FontSize="15"  Padding="0 4 4 4 "/>
+            </StackPanel>
+        </Border>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Введите " Foreground ="White" FontSize="15" Padding="4 4 4 4 " VerticalAlignment="Center"/>
+                    <TextBox x:Name="NumberProduct"  Padding="5" Foreground ="White" FontSize="15" VerticalAlignment="Center"/>
+                    <TextBlock Text="продукт:" Foreground ="White" FontSize="15" Padding="4 4 4 4 " VerticalAlignment="Center"/>
+                </StackPanel>                
+            </Grid>
+        </Grid>
+        
     </Grid>
 </UserControl>
