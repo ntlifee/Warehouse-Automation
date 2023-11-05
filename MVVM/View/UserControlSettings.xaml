@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WarehouseAutomation.MVVM.View"
+             xmlns:view="clr-namespace:WarehouseAutomation.MVVM.View"
              mc:Ignorable="d" 
              Height="600" Width="790">
     <Grid >
@@ -26,7 +26,7 @@
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"/>
-                <RowDefinition/>
+                <RowDefinition Height="540"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <StackPanel Orientation="Horizontal">
@@ -35,7 +35,9 @@
                     <TextBlock Text="продукт:" Foreground ="White" FontSize="15" Padding="4 4 4 4 " VerticalAlignment="Center"/>
                 </StackPanel>                
             </Grid>
-        </Grid>
-        
+            <Grid Grid.Row="1">
+                <view:UserControlProduct Visibility="Visible" VerticalAlignment="Top"/>
+            </Grid>
+        </Grid>        
     </Grid>
 </UserControl>

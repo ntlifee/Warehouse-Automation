@@ -12,30 +12,7 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Border Grid.Column="0" Padding="20">            
-            <StackPanel>
-                <TextBlock Text="Вид товара" Foreground ="White" FontSize="15" Padding="0 4 4 4 "/>
-                <TextBox x:Name="TypeProduct"  Padding="4" Foreground ="White" FontSize="15"/>
-
-                <TextBlock Text="Оптовых упаковок" Foreground ="White" FontSize="15"  Padding="0 4 4 4 "/>
-                <StackPanel Orientation="Horizontal">
-                    <TextBox x:Name ="Packaging"  Width="250" Padding="4" IsReadOnly="True" Foreground ="White" FontSize="15"/>
-                    <StackPanel Orientation="Vertical" >
-                        <Button Style="{DynamicResource DefaultButtonStyle}"/>
-                        <Button Style="{DynamicResource DefaultButtonStyle}"/>
-                    </StackPanel>
-                </StackPanel>
-               
-                <TextBlock Text="Кол-во в упоковке" Foreground ="White" FontSize="15"  Padding="0 4 4 4 "/>
-                <TextBox x:Name="QuantityPackaging"  Padding="4" IsReadOnly="True" Foreground ="White" FontSize="15"/>
-                <TextBlock Text="Размер упоковки" Foreground ="White" FontSize="15" Padding="0 4 4 4 " />
-                <TextBox x:Name="SizePackaging"  Padding="4" IsReadOnly="True" Foreground ="White" FontSize="15"/>
-                <TextBlock Text="Срок годности" Foreground ="White" FontSize="15" Padding="0 4 4 4 " />
-                <TextBox x:Name ="ExpirationDate"  Padding="4" IsReadOnly="True" Foreground ="White" FontSize="15"/>
-                <TextBlock Text="Цена" Foreground ="White" FontSize="15" Padding="0 4 4 4 " />
-                <TextBox x:Name="Price"   Padding="4" IsReadOnly="True" Foreground ="White" FontSize="15"/>
-            </StackPanel>
-        </Border>
+        <view:UserControlProduct Visibility="Visible" VerticalAlignment="Top"/>
         <Border Grid.Column="1" Padding="20">
             <StackPanel>
                 <TextBlock Text="Уценка" Foreground ="White" FontSize="15" Padding="0 4 4 4 "/>
