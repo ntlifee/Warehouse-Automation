@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WarehouseAutomation.MVVM.View"
              xmlns:view="clr-namespace:WarehouseAutomation.MVVM.View"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              Height="600" Width="790">
     <Grid   >
@@ -15,10 +16,10 @@
         <view:UserControlProduct Visibility="Visible" VerticalAlignment="Top"/>
         <Border Grid.Column="1" Padding="20">
             <StackPanel>
-                <TextBlock Text="Уценка" Foreground ="White" FontSize="15" Padding="0 4 4 4 "/>
-                <TextBox x:Name="TypeP"  Padding="4" Foreground ="White" FontSize="15"/>
-                <TextBlock Text="Новая цена" Foreground ="White" FontSize="15"  Padding="0 4 4 4 "/>
-                <TextBox x:Name ="NewPrice"  Padding="4" IsReadOnly="True"/>
+                <TextBlock Text="Уценка"  Foreground ="White" FontSize="15" Padding="0 10 10 10 "/>
+                <TextBox x:Name="TypeP" Width="160" HorizontalAlignment="Left" Padding="4" Foreground ="White" FontSize="15"/>
+                <TextBlock Text="Новая цена" Foreground ="White" FontSize="15"  Padding="0 10 10 10 "/>
+                <TextBox x:Name ="NewPrice" Width="160" HorizontalAlignment="Left" Padding="4" IsReadOnly="True"/>
             </StackPanel>
         </Border>        
     </Grid>

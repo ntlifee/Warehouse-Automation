@@ -31,11 +31,12 @@
                 </StackPanel>
             </Grid>
 
-            <Grid Grid.Row="1" Background="#FF292727">
+            <Grid Background="#FF292727" Margin="27,30,-27,10" Grid.RowSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="800"/>
                     <ColumnDefinition Width="300"/>
                 </Grid.ColumnDefinitions>
+                
 
                 <Border Grid.Column="0" BorderBrush="#FF696969" BorderThickness="0 0 2 2">
                     <Grid>
@@ -54,9 +55,9 @@
                             </Grid>
                             <Grid Grid.Column="1">
                                 <TextBlock Text="Зав. складом:" Foreground ="White" Padding="8"  HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="NoWrap"  VerticalAlignment="Center" Height="30" Width="100"/>
-                                <Button Command="{Binding ButtonHaracteris}" Content="Название1" HorizontalAlignment="Left" Width="100" Height="30"
+                                <Button Command="{Binding ButtonHaracteris}" Content="Уценка" HorizontalAlignment="Left" Width="100" Height="30"
                                    Margin="120,0,0,0" VerticalAlignment="Center" Style="{DynamicResource DefaultButtonStyle}"/>
-                                <Button Command="{Binding ButtonApplications}" Content="Название2" HorizontalAlignment="Left" Width="100" Height="30"
+                                <Button Command="{Binding ButtonApplications}" Content="Заявки" HorizontalAlignment="Left" Width="100" Height="30"
                                     Margin="230,0,0,0" VerticalAlignment="Center" Style="{DynamicResource DefaultButtonStyle}"/>
                             </Grid>
                         </Grid>
@@ -69,7 +70,11 @@
                 </Border>
 
                 <Grid Grid.Column="1">
-                    <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
@@ -93,6 +98,9 @@
                                     Margin="10 0 0 0" VerticalAlignment="Center" Style="{DynamicResource DefaultButtonStyle}"/>
                             </Grid>
                         </Grid>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        
                     </Grid>
                 </Grid>
 

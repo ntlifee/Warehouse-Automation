@@ -8,33 +8,33 @@
              Height="540" Width="395">
     <Grid>
         <StackPanel Margin="20">
-            <TextBlock Text="Вид товара" Foreground ="White" FontSize="15" Padding="0 4 4 4 "/>
-            <ComboBox Width="130" Height="35" HorizontalAlignment="Left"/>
+            <TextBlock Text="Вид товара" Foreground ="White" FontSize="15" Padding="0 10 10 10"/>
+            <ComboBox Width="160" Height="35" HorizontalAlignment="Left"/>
 
-            <TextBlock Text="Оптовых упаковок" Foreground ="White" FontSize="15"  Padding="0 4 4 4 "/>
+            <TextBlock Text="Оптовых упаковок" Foreground ="White" FontSize="15"  Padding="0 10 10 10"/>
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name ="Packaging" Width="110" Padding="4" Foreground ="White" FontSize="15"/>
+                <TextBox x:Name ="Packaging" Width="140" Padding="4" Foreground ="White" FontSize="15"/>
                 <StackPanel Orientation="Vertical" >
                     <Button Content="⇑" Style="{DynamicResource DefaultButtonStyle}"/>
                     <Button Content="⇓" Style="{DynamicResource DefaultButtonStyle}"/>
                 </StackPanel>
             </StackPanel>
 
-            <TextBlock Text="Кол-во в упаковке" Foreground ="White" FontSize="15"  Padding="0 4 4 4 "/>
+            <TextBlock Text="Кол-во в упаковке" Foreground ="White" FontSize="15"  Padding="0 10 10 10"/>
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="QuantityPackaging" Width="110" Padding="4" Foreground ="White" FontSize="15" />
+                <TextBox x:Name="QuantityPackaging" Width="140" Padding="4" Foreground ="White" FontSize="15" />
                 <StackPanel Orientation="Vertical" >
                     <Button Content="⇑" Style="{DynamicResource DefaultButtonStyle}"/>
                     <Button Content="⇓" Style="{DynamicResource DefaultButtonStyle}"/>
                 </StackPanel>
             </StackPanel>
-            
-            <TextBlock Text="Размер упоковки" Foreground ="White" FontSize="15" Padding="0 4 4 4 " />
-            <TextBox x:Name="SizePackaging"  Padding="4" Foreground ="White" FontSize="15" Width="130" HorizontalAlignment="Left"/>
-            <TextBlock Text="Срок годности" Foreground ="White" FontSize="15" Padding="0 4 4 4 " />
-            <TextBox x:Name ="ExpirationDate"  Padding="4" Foreground ="White" FontSize="15" Width="130" HorizontalAlignment="Left"/>
-            <TextBlock Text="Цена" Foreground ="White" FontSize="15" Padding="0 4 4 4 " />
-            <TextBox x:Name="Price"   Padding="4" Foreground ="White" FontSize="15" Width="130" HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Размер упоковки" Foreground ="White" FontSize="15" Padding="0 10 10 10" />
+            <TextBox x:Name="SizePackaging"  Padding="4" Foreground ="White" FontSize="15" Width="160" HorizontalAlignment="Left"/>
+            <TextBlock Text="Срок годности" Foreground ="White" FontSize="15" Padding="0 10 10 10" />
+            <TextBox x:Name ="ExpirationDate"  Padding="4" Foreground ="White" FontSize="15" Width="160" HorizontalAlignment="Left"/>
+            <TextBlock Text="Цена" Foreground ="White" FontSize="15" Padding="0 10 10 10" />
+            <TextBox x:Name="Price"   Padding="4" Foreground ="White" FontSize="15" Width="160" HorizontalAlignment="Left"/>
         </StackPanel>
     </Grid>
 </UserControl>
