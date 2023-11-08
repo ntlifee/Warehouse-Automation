@@ -9,19 +9,23 @@
              >
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="40"/>
-            <RowDefinition Height="540"/>
+            <RowDefinition Height="520"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
+            <TextBlock Text="Статистика" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="White"/>
+        </Grid>
+            <Grid Grid.Row="1">
             <StackPanel Orientation="Horizontal" > 
                 <!-- Биндинги для кнопок изменить-->
-                <Button Command="{Binding ButtonHaracteris}" Content="Дневная" HorizontalAlignment="Left" Width="80" Height="25"
+                <Button Command="{Binding ButtonHaracteris}" Content="Суточная" HorizontalAlignment="Left" Width="80" Height="25"
                      Margin="65,0,10,0" VerticalAlignment="Center" Style="{DynamicResource DefaultButtonStyle}"/>
                 <Button Command="{Binding ButtonApplications}" Content="Общая" HorizontalAlignment="Left" Width="80" Height="25"
-                        Margin="0,0,0,0" VerticalAlignment="Center" Style="{DynamicResource DefaultButtonStyle}"/>
+                         VerticalAlignment="Center" Style="{DynamicResource DefaultButtonStyle}"/>
             </StackPanel>
         </Grid>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="2">
             <view:UserControlDailyStatistics Visibility="Hidden"/>
             <view:UserControlGeneralStatistics Visibility="Visible"/>
         </Grid>

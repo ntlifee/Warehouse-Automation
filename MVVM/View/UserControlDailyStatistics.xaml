@@ -7,20 +7,20 @@
              mc:Ignorable="d" 
              Height="540" Width="300">
     <Grid>
-        <StackPanel Margin="10">
+        <StackPanel Margin="10 0 10 10">
             <!--Сделать как надо -->
             <TextBlock Text="Всего заявок:" Foreground ="White" FontSize="15" Padding="0 10 10 10" />
-            <TextBox x:Name="SizePackaging"  Padding="4" Foreground ="White" FontSize="15" Width="160" HorizontalAlignment="Left"/>
+            <TextBlock x:Name="SizePackaging"  Padding="4" Foreground ="White" FontSize="15" Width="160" HorizontalAlignment="Left"/>
             <TextBlock Text="Выполнено заявок:" Foreground ="White" FontSize="15" Padding="0 10 10 10" />
-            <TextBox x:Name="SizePackaging1"  Padding="4" Foreground ="White" FontSize="15" Width="160" HorizontalAlignment="Left"/>
+            <TextBlock x:Name="SizePackaging1"  Padding="4" Foreground ="White" FontSize="15" Width="160" HorizontalAlignment="Left"/>
             <TextBlock Text="Отклонено заявок:" Foreground ="White" FontSize="15" Padding="0 10 10 10" />
-            <TextBox x:Name="SizePackaging2"  Padding="4" Foreground ="White" FontSize="15" Width="160" HorizontalAlignment="Left"/>
+            <TextBlock x:Name="SizePackaging2"  Padding="4" Foreground ="White" FontSize="15" Width="160" HorizontalAlignment="Left"/>
             <TextBlock Text="Заявок на завтра:" Foreground ="White" FontSize="15" Padding="0 10 10 10" />
-            <TextBox x:Name="SizePackaging3"  Padding="4" Foreground ="White" FontSize="15" Width="160" HorizontalAlignment="Left"/>
+            <TextBlock x:Name="SizePackaging3"  Padding="4" Foreground ="White" FontSize="15" Width="160" HorizontalAlignment="Left"/>
             <TextBlock Text="Прибыль склада:" Foreground ="White" FontSize="15" Padding="0 10 10 10" />
-            <TextBox x:Name="SizePackaging4"  Padding="4" Foreground ="White" FontSize="15" Width="160" HorizontalAlignment="Left"/>
+            <TextBlock x:Name="SizePackaging4"  Padding="4" Foreground ="White" FontSize="15" Width="160" HorizontalAlignment="Left"/>
             <TextBlock Text="Потери склада:" Foreground ="White" FontSize="15" Padding="0 10 10 10" />
-            <TextBox x:Name="SizePackaging5"  Padding="4" Foreground ="White" FontSize="15" Width="160" HorizontalAlignment="Left"/>
+            <TextBlock x:Name="SizePackaging5"  Padding="4" Foreground ="White" FontSize="15" Width="160" HorizontalAlignment="Left"/>
         </StackPanel>
     </Grid>
 </UserControl>

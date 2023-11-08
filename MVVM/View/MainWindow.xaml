@@ -62,9 +62,10 @@
                             </Grid>
                         </Grid>
                         <Grid Grid.Row="1" Width="790" Height="600" Margin="5 5 5 10">
-                            <view:UserControlSettings Visibility="Hidden"/>
-                            <view:UserControlAdmin Visibility="Visible"/>
+                            <view:UserControlSettings Visibility="Visible"/>
+                            <view:UserControlAdmin Visibility="Hidden"/>
                             <view:UserControlApplications Visibility="Hidden"/>
+                            <view:UserControlLog Visibility="Hidden"/>
                         </Grid>
                     </Grid>
                 </Border>

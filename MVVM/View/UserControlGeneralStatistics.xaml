@@ -7,14 +7,14 @@
              mc:Ignorable="d" 
              Height="540" Width="300">
     <Grid>
-        <StackPanel Margin="10">
+        <StackPanel Margin="10 0 10 10">
             <!--Сделать как надо -->
             <TextBlock Text="Всего заявок:" Foreground ="White" FontSize="15" Padding="0 10 10 10" />
-            <TextBox x:Name="SizePackaging"  Padding="4" Foreground ="White" FontSize="15" Width="160" HorizontalAlignment="Left"/>
+            <TextBlock x:Name="SizePackaging"  Padding="4" Foreground ="White" FontSize="15" Width="160" HorizontalAlignment="Left"/>
             <TextBlock Text="Выполнено заявок:" Foreground ="White" FontSize="15" Padding="0 10 10 10" />
-            <TextBox x:Name="SizePackaging1"  Padding="4" Foreground ="White" FontSize="15" Width="160" HorizontalAlignment="Left"/>
+            <TextBlock x:Name="SizePackaging1"  Padding="4" Foreground ="White" FontSize="15" Width="160" HorizontalAlignment="Left"/>
             <TextBlock Text="Отклонено заявок:" Foreground ="White" FontSize="15" Padding="0 10 10 10" />
-            <TextBox x:Name="SizePackaging2"  Padding="4" Foreground ="White" FontSize="15" Width="160" HorizontalAlignment="Left"/>
+            <TextBlock x:Name="SizePackaging2"  Padding="4" Foreground ="White" FontSize="15" Width="160" HorizontalAlignment="Left"/>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -8,19 +8,21 @@
              Height="600" Width="790">
     <Grid >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
+            <ColumnDefinition Width="395"/>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="145"/>
         </Grid.ColumnDefinitions>
         <Border Grid.Column="1" Padding="20">
             
         </Border>
-        <Border Grid.Column="0" Padding="20">
+        <Border Grid.Column="0" Padding="20" BorderBrush="#FF696969" BorderThickness="0 0 2 0">
             <StackPanel>
-                <TextBlock Text="Введите количество видов продуктов:" Foreground ="White" FontSize="15" Padding="0 4 4 4 "/>
-                <TextBox x:Name="TypeP"  Padding="4" Foreground ="White" FontSize="15"/>
-                <TextBlock Text="Введите количество обслуживающих магазинов:" Foreground ="White" FontSize="15"  Padding="0 4 4 4 "/>
-                <TextBox x:Name ="NewPrice"  Padding="4" IsReadOnly="True"/>
-                <TextBlock Text="Введите количество дней моделировани я:" Foreground ="White" FontSize="15"  Padding="0 4 4 4 "/>
+                <TextBlock Text="Количество видов продуктов:" Foreground ="White" FontSize="15" Padding="0 4 4 4 "/>
+                <TextBox x:Name="TypeP"  Padding="4" Foreground ="White" FontSize="15" Width="50" HorizontalAlignment="Left" />
+                <TextBlock Text="Количество обслуживающих магазинов:" Foreground ="White" FontSize="15"  Padding="0 4 4 4 " />
+                <TextBox x:Name ="NewPrice"  Padding="4" Width="50" HorizontalAlignment="Left"/>
+                <TextBlock Text="Количество дней моделирования:" Foreground ="White" FontSize="15"  Padding="0 4 4 4 "/>
+                <TextBox x:Name ="CountDaysModeling" Padding="4" Width="50" HorizontalAlignment="Left"/>
             </StackPanel>
         </Border>
         <Grid Grid.Column="1">
@@ -30,14 +32,24 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Введите " Foreground ="White" FontSize="15" Padding="4 4 4 4 " VerticalAlignment="Center"/>
-                    <TextBox x:Name="NumberProduct"  Padding="5" Foreground ="White" FontSize="15" VerticalAlignment="Center"/>
+                    <TextBlock Text="Введите " Foreground ="White" FontSize="15" Padding="4 4 4 4 " Margin="5 0 0 0" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="NumberProduct"  Padding="5" Foreground ="White" FontSize="15" VerticalAlignment="Center"/>
                     <TextBlock Text="продукт:" Foreground ="White" FontSize="15" Padding="4 4 4 4 " VerticalAlignment="Center"/>
                 </StackPanel>                
             </Grid>
             <Grid Grid.Row="1">
                 <view:UserControlProduct Visibility="Visible" VerticalAlignment="Top"/>
+            </Grid>            
+        </Grid>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="500"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1">
+                <Button Command="{Binding ButtonNext}" Content="Далее" HorizontalAlignment="Left" Width="100" Height="30"
+                     VerticalAlignment="Top" Style="{DynamicResource DefaultButtonStyle}"/>
             </Grid>
-        </Grid>        
+        </Grid>
     </Grid>
 </UserControl>

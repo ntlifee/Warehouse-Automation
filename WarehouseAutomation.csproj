@@ -104,6 +104,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MVVM\View\UserControlLog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\View\UserControlProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -134,6 +138,9 @@
     </Compile>
     <Compile Include="MVVM\View\UserControlGeneralStatistics.xaml.cs">
       <DependentUpon>UserControlGeneralStatistics.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\UserControlLog.xaml.cs">
+      <DependentUpon>UserControlLog.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\UserControlProduct.xaml.cs">
       <DependentUpon>UserControlProduct.xaml</DependentUpon>
