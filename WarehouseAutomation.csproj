@@ -96,6 +96,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MVVM\View\UserControlDailyStatistics.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\UserControlGeneralStatistics.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\View\UserControlProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -120,6 +128,12 @@
   <ItemGroup>
     <Compile Include="MVVM\View\UserControlApplications.xaml.cs">
       <DependentUpon>UserControlApplications.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\UserControlDailyStatistics.xaml.cs">
+      <DependentUpon>UserControlDailyStatistics.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\UserControlGeneralStatistics.xaml.cs">
+      <DependentUpon>UserControlGeneralStatistics.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\UserControlProduct.xaml.cs">
       <DependentUpon>UserControlProduct.xaml</DependentUpon>
