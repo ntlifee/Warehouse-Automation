@@ -12,8 +12,12 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="WarehouseAutomation" Height="700" Width="1100" WindowStartupLocation="CenterScreen" 
-        MinHeight="700" MinWidth="1100" WindowStyle="None" ResizeMode="NoResize">
+        Title="WarehouseAutomation"         
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="None" 
+        ResizeMode="NoResize"
+        Height="700" 
+        Width="1100">
     <Border Background="#FF696969" BorderBrush="#FF696969" BorderThickness="2">
         <Grid>
             <Grid.RowDefinitions>
@@ -22,93 +26,102 @@
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0" MouseDown="WindowMove" Background="#FF969696">
-                <TextBlock HorizontalAlignment="Left" Foreground="White" Text="WarehouseAutomation" Margin="10"/>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button x:Name="ButtonCollapse" Content="-" HorizontalAlignment="Left" VerticalAlignment="Center"
-                                Margin="5,0,5,0" Click="ButtonCollapse_Click" Style="{DynamicResource DefaultButtonStyle}"/>
-                    <Button x:Name="ButtonClose" Content="X" HorizontalAlignment="Left" VerticalAlignment="Center"
-                                Margin="5,0,5,0" Click="ButtonClose_Click" Style="{DynamicResource DefaultButtonStyle}"/>
+                <TextBlock HorizontalAlignment="Left" 
+                           Foreground="White" 
+                           Text="WarehouseAutomation" 
+                           Margin="10"/>
+                <StackPanel Orientation="Horizontal" 
+                            HorizontalAlignment="Right">
+                    <Button x:Name="ButtonCollapse" 
+                            Content="-" 
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Center"
+                            Margin="5,0,5,0" 
+                            Click="ButtonCollapse_Click" 
+                            Style="{DynamicResource DefaultButtonStyle}"/>
+                    <Button x:Name="ButtonClose" 
+                            Content="X" 
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="5,0,5,0" 
+                            Click="ButtonClose_Click" 
+                            Style="{DynamicResource DefaultButtonStyle}"/>
                 </StackPanel>
             </Grid>
 
             <Grid Background="#FF292727"  Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="800"/>
                     <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="400"/>
+                    <ColumnDefinition Width="400"/>
                 </Grid.ColumnDefinitions>
                 
-
                 <Border Grid.Column="0" BorderBrush="#FF696969" BorderThickness="0 0 2 2">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="50"/>
-                            <RowDefinition Height="610"/>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="600"/>
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="400"/>
-                                <ColumnDefinition Width="400"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid Grid.Column="0" >
-                                <Button Command="{Binding ButtonSetting}" Content="Настройки" HorizontalAlignment="Right" Width="100" Height="30"
-                                    Margin="0 0 10 0" VerticalAlignment="Center" Style="{DynamicResource DefaultButtonStyle}"/>
+
+                        <Grid Grid.Row="0" Height="60" Width="300">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" Height="30" Width="300">
+                                <TextBlock Text="Моделирование" 
+                                           Foreground="White" 
+                                           HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center" 
+                                           FontSize="15"/>
                             </Grid>
-                            <Grid Grid.Column="1">
-                                <TextBlock Text="Зав. складом:" Foreground ="White" Padding="8"  HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="NoWrap"  VerticalAlignment="Center" Height="30" Width="100"/>
-                                <Button Command="{Binding ButtonHaracteris}" Content="Уценка" HorizontalAlignment="Left" Width="100" Height="30"
-                                   Margin="120,0,0,0" VerticalAlignment="Center" Style="{DynamicResource DefaultButtonStyle}"/>
-                                <Button Command="{Binding ButtonApplications}" Content="Заявки" HorizontalAlignment="Left" Width="100" Height="30"
-                                    Margin="230,0,0,0" VerticalAlignment="Center" Style="{DynamicResource DefaultButtonStyle}"/>
-                            </Grid>
+                            <Border Grid.Row="1" BorderBrush="#FF696969" BorderThickness="0 0 0 2">
+                                <Grid Grid.Row="1" Height="30" Width="300">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="150"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <Grid Grid.Column="0" Height="30" Width="150">
+                                        <Button x:Name="ButtonStartSimul" 
+                                                Command="{Binding ButtonHaracteris}" 
+                                                Content="Старт" 
+                                                HorizontalAlignment="Right" 
+                                                Width="50"
+                                                Margin="0 0 10 0" 
+                                                VerticalAlignment="Center" 
+                                                Style="{DynamicResource DefaultButtonStyle}"/>
+                                    </Grid>
+                                    <Grid Grid.Column="2" Height="30" Width="150">
+                                        <Button x:Name="ButtonStopSimul" 
+                                                Content="Стоп" 
+                                                HorizontalAlignment="Left" 
+                                                Width="50"
+                                                Margin="10 0 0 0" 
+                                                VerticalAlignment="Center" 
+                                                Style="{DynamicResource DefaultButtonStyle}"/>
+                                    </Grid>
+                                </Grid>
+                            </Border>
                         </Grid>
-                        <Grid Grid.Row="1" Width="790" Height="600" Margin="5 5 5 10">
+
+                        <Grid Grid.Row="1" Height="600" Width="300">
+                            <!--Настройки модеирования-->
                             <view:UserControlSettings Visibility="Visible"/>
-                            <view:UserControlAdmin Visibility="Hidden"/>
-                            <view:UserControlApplications Visibility="Hidden"/>
-                            <view:UserControlLog Visibility="Hidden"/>
                         </Grid>
+                        
                     </Grid>
                 </Border>
 
-                <Grid Grid.Column="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="60"/>
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <Grid Grid.Row="0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
-                        </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
-                            <TextBlock Text="Моделирование" Foreground="White" HorizontalAlignment="Center" 
-                            VerticalAlignment="Center" FontSize="15"/>
-                        </Grid>
-                        <Border Grid.Row="1" BorderBrush="#FF696969" BorderThickness="0 0 0 2">
-                                <Grid Grid.Row="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150"/>
-                                    <ColumnDefinition Width="150"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid Grid.Column="0">
-                                    <Button x:Name="ButtonStartSimul" Content="Старт" HorizontalAlignment="Right" Width="50"
-                                        Margin="0 0 10 0" VerticalAlignment="Center" Style="{DynamicResource DefaultButtonStyle}"/>
-                                </Grid>
-                                <Grid Grid.Column="2">
+                <Border Grid.Column="1"  BorderBrush="#FF696969" BorderThickness="0 0 2 0" Height="660" Width="400">
+                    <!--Перемещение продуктов Log-->
+                    <view:UserControlLog Visibility="Visible"/>
+                </Border>
 
-                                    <Button x:Name="ButtonStopSimul" Content="Стоп" HorizontalAlignment="Left" Width="50"
-                                        Margin="10 0 0 0" VerticalAlignment="Center" Style="{DynamicResource DefaultButtonStyle}"/>
-                                </Grid>
-                            </Grid>
-                        </Border>
-                    </Grid>
-                    <Grid Grid.Row="1">
-                        <!--600-->
-                        <view:UserControlStatistics Visibility="Visible"/>
-                        <view:UserControlAdmin Visibility="Hidden"/>
-                    </Grid>
+                <Grid Grid.Column="2" Height="660" Width="400">
+                    <!--Статистика моделирования-->
+                    <view:UserControlStatistics Visibility="Visible"/>
                 </Grid>
-
             </Grid>
         </Grid>
     </Border>
