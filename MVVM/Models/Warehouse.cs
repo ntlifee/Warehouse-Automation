@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace WarehouseAutomation.MVVM.Models
 {
-    internal class Warehouse
+    public class Warehouse : IWarehouse
     {
+        public uint CapacityWarehouse { get; set; }
+        public uint CountProduct { get; set; }
+        public List<Product> Products { get; set; }
     }
 }

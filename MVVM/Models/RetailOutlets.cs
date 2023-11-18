@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace WarehouseAutomation.MVVM.Models
 {
-    internal class RetailOutlets
+    public class RetailOutlets : IRetailOutlets
     {
+        public string Name { get; set; }
+        public List<Product> Products { get; set; }
     }
 }

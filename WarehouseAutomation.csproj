@@ -82,8 +82,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MVVM\Models\Applications.cs" />
+    <Compile Include="MVVM\Models\Interfaces.cs" />
     <Compile Include="MVVM\Models\Manager.cs" />
-    <Compile Include="MVVM\Models\Products.cs" />
+    <Compile Include="MVVM\Models\Product.cs" />
     <Compile Include="MVVM\Models\RetailOutlets.cs" />
     <Compile Include="MVVM\Models\Settings.cs" />
     <Compile Include="MVVM\Models\Statistics.cs" />

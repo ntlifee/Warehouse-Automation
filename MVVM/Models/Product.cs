@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WarehouseAutomation.MVVM.Models
 {
-    internal class Products
+    public class Product : IProduct
     {
         public string Type { get; set; }
         public byte NumberPacks { get; set; }

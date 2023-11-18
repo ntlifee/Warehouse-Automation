@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WarehouseAutomation.MVVM.Models
 {
-    internal class Manager
+    public class Manager
     {
     }
 }

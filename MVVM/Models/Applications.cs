@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace WarehouseAutomation.MVVM.Models
 {
-    internal class Applications
+    public class Applications : IApplications
     {
-
+        public string Name { get; set; }
+        public Product product { get; set; }
     }
 }
