@@ -6,8 +6,8 @@
              xmlns:views="clr-namespace:WarehouseAutomation.MVVM.View"
              mc:Ignorable="d" 
              Width="500" Height="660">
-    <Grid>
-        <ListBox ItemsSource="{Binding Logs}">
+    <Grid >
+        <ListBox ItemsSource="{Binding Logs}" Margin="499,0,-499,0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding ItemLogs}" />

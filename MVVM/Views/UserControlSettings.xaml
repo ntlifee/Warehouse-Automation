@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:views="clr-namespace:WarehouseAutomation.MVVM.View"
              mc:Ignorable="d" 
              Height="560" Width="260">
@@ -10,14 +11,16 @@
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
-                <RowDefinition Height="50"/>
                 <RowDefinition Height="60"/>
+                <RowDefinition Height="30"/>
                 <RowDefinition Height="60"/>
+                <RowDefinition Height="30"/>
                 <RowDefinition Height="60"/>
+                <RowDefinition Height="30"/>
                 <RowDefinition Height="60"/>
+                <RowDefinition Height="30"/>
                 <RowDefinition Height="60"/>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="80"/>
+                <RowDefinition Height="110"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" Height="30" Width="260">
                 <TextBlock Text="Количество видов продуктов:" 
@@ -35,8 +38,8 @@
                         Value="16" 
                         Minimum="12" 
                         Maximum="20"                             
-                        Height="40"
-                        Width="200"
+                        Height="35"
+                        Width="195"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
                         Margin="15,15,0,0"  
@@ -44,7 +47,7 @@
                         TickFrequency = "1"
                         Foreground ="#FF696969"
                         Focusable="False"
-                        TickPlacement ="BottomRight" Grid.ColumnSpan="2"/>
+                        TickPlacement ="BottomRight"/>
                 <TextBlock  Grid.Column="1"
                             Height="30"
                             Width="30"
@@ -86,13 +89,13 @@
                             Text="{Binding Value, ElementName=SliderShops}"
                             FontSize="15"
                             HorizontalAlignment="Center"
-                            VerticalAlignment="Center"/>        
+                            VerticalAlignment="Center"/>
             </Grid>
             <Grid Grid.Row="4" Height="30" Width="260">
                 <TextBlock Text="Количество дней моделирования:" 
                            Foreground ="White" 
                            FontSize="15" 
-                           Padding="15 4 4 4 "/>    
+                           Padding="15 4 4 4 "/>
             </Grid>
             <Grid Grid.Row="5" Height="60" Width="260">
                 <Grid.ColumnDefinitions>
@@ -140,13 +143,13 @@
                         Height="40"
                         Width="200"
                         HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Margin="15,15,0,0"  
+                        VerticalAlignment="Center"
+                        Margin="20,0,0,0"  
                         IsSnapToTickEnabled ="True"
                         TickFrequency = "1"
                         Foreground ="#FF696969"
                         Focusable="False"
-                        TickPlacement ="BottomRight" Grid.ColumnSpan="2"/>
+                        TickPlacement ="BottomRight"/>
                 <TextBlock  Grid.Column="1"
                             Height="30"
                             Width="30"
@@ -154,9 +157,73 @@
                             Text="{Binding Value, ElementName=SliderWarehouse}"
                             FontSize="15"
                             HorizontalAlignment="Center"
-                            VerticalAlignment="Center"/>
+                            VerticalAlignment="Top" Margin="0,10,0,0"/>
             </Grid>
-            <Grid Grid.Row="8" Height="80" Width="260">
+            <Grid Grid.Row="8" Height="30" Width="260">
+                <TextBlock Text="Диапозон случайных чисел:" 
+                Foreground ="White" 
+                FontSize="15" 
+                Padding="15 4 4 4 "/>
+            </Grid>
+            <Grid Grid.Row="9" Height="60" Width="260">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+                <mah:RangeSlider x:Name="SliderRange"
+                                 Height="40"
+                                 Width="200"   
+                                 MinRange="1"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center"
+                                 MinRangeWidth ="1"
+                                 TickFrequency="1"                                             
+                                 IsSnapToTickEnabled="True" 
+                                 ExtendedMode ="True"
+                                 Minimum="0" Maximum="{Binding Value, ElementName=SliderShops }"
+                                 TickPlacement="BottomRight"
+                                 AutoToolTipPlacement="TopLeft"
+                                 LowerValue="0" UpperValue="3"
+                                 >
+                    
+                    
+                    
+                    <!--Height="40"
+                        Width="200"
+                    LargeChange="10"
+                    LowerValue="40"
+                     
+                    IsSnapToTickEnabled ="True"
+                    TickPlacement ="BottomRight"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"-->
+                        
+                </mah:RangeSlider>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock  Grid.Row="0"
+                                Height="30"
+                                Width="30"
+                                Foreground="White"
+                                Text="{Binding LowerValue, ElementName=SliderRange}"
+                                FontSize="15"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top" Margin="0,10,0,0"/>
+                    <TextBlock  Grid.Row="1"
+                                Height="30"
+                                Width="30"
+                                Foreground="White"
+                                Text="{Binding UpperValue, ElementName=SliderRange}"
+                                FontSize="15"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top" Margin="0,10,0,0"/>
+                </Grid>
+                
+            </Grid>
+            <Grid Grid.Row="10" Height="40" Width="260">
                 <Button Command="{Binding ButtonNext}" 
                         Content="Сохранить" 
                         HorizontalAlignment="Right"
