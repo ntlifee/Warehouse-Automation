@@ -44,18 +44,12 @@
                         VerticalAlignment="Top"
                         Margin="15,15,0,0"  
                         IsSnapToTickEnabled ="True"
+                        AutoToolTipPlacement="TopLeft"
                         TickFrequency = "1"
                         Foreground ="#FF696969"
                         Focusable="False"
                         TickPlacement ="BottomRight"/>
-                <TextBlock  Grid.Column="1"
-                            Height="30"
-                            Width="30"
-                            Foreground="White"
-                            Text="{Binding Value, ElementName=SliderProduct}"
-                            FontSize="15"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"/>
+               
             </Grid>
             <Grid Grid.Row="2" Height="30" Width="260">
                 <TextBlock Text="Количество магазинов:" 
@@ -78,18 +72,12 @@
                         VerticalAlignment="Top"
                         Margin="15,15,0,0"  
                         IsSnapToTickEnabled ="True"
+                        AutoToolTipPlacement="TopLeft"
                         TickFrequency = "1"
                         Foreground ="#FF696969"
                         Focusable="False"
                         TickPlacement ="BottomRight" Grid.ColumnSpan="2"/>
-                <TextBlock  Grid.Column="1"
-                            Height="30"
-                            Width="30"
-                            Foreground="White"
-                            Text="{Binding Value, ElementName=SliderShops}"
-                            FontSize="15"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"/>
+               
             </Grid>
             <Grid Grid.Row="4" Height="30" Width="260">
                 <TextBlock Text="Количество дней моделирования:" 
@@ -112,18 +100,12 @@
                         VerticalAlignment="Top"
                         Margin="15,15,0,0"  
                         IsSnapToTickEnabled ="True"
+                        AutoToolTipPlacement="TopLeft"
                         TickFrequency = "1"
                         Foreground ="#FF696969"
                         Focusable="False"
                         TickPlacement ="BottomRight" Grid.ColumnSpan="2"/>
-                <TextBlock  Grid.Column="1"
-                            Height="30"
-                            Width="30"
-                            Foreground="White"
-                            Text="{Binding Value, ElementName=SliderSimulations}"
-                            FontSize="15"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"/>
+                
             </Grid>
             <Grid Grid.Row="6" Height="30" Width="260">
                 <TextBlock Text="Вместимость склада для продукта:" 
@@ -146,18 +128,13 @@
                         VerticalAlignment="Center"
                         Margin="20,0,0,0"  
                         IsSnapToTickEnabled ="True"
+                        AutoToolTipPlacement="TopLeft"
                         TickFrequency = "1"
+                        
                         Foreground ="#FF696969"
                         Focusable="False"
                         TickPlacement ="BottomRight"/>
-                <TextBlock  Grid.Column="1"
-                            Height="30"
-                            Width="30"
-                            Foreground="White"
-                            Text="{Binding Value, ElementName=SliderWarehouse}"
-                            FontSize="15"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Top" Margin="0,10,0,0"/>
+             
             </Grid>
             <Grid Grid.Row="8" Height="30" Width="260">
                 <TextBlock Text="Диапозон случайных чисел:" 
@@ -176,51 +153,18 @@
                                  MinRange="1"
                                  HorizontalAlignment="Center"
                                  VerticalAlignment="Center"
-                                 MinRangeWidth ="1"
                                  TickFrequency="1"                                             
                                  IsSnapToTickEnabled="True" 
-                                 ExtendedMode ="True"
+                                 ExtendedMode ="True"                                 
                                  Minimum="0" Maximum="{Binding Value, ElementName=SliderShops }"
                                  TickPlacement="BottomRight"
                                  AutoToolTipPlacement="TopLeft"
                                  LowerValue="0" UpperValue="3"
                                  >
-                    
-                    
-                    
-                    <!--Height="40"
-                        Width="200"
-                    LargeChange="10"
-                    LowerValue="40"
-                     
-                    IsSnapToTickEnabled ="True"
-                    TickPlacement ="BottomRight"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"-->
+
                         
                 </mah:RangeSlider>
-                <Grid Grid.Column="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="30"/>
-                    </Grid.RowDefinitions>
-                    <TextBlock  Grid.Row="0"
-                                Height="30"
-                                Width="30"
-                                Foreground="White"
-                                Text="{Binding LowerValue, ElementName=SliderRange}"
-                                FontSize="15"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Top" Margin="0,10,0,0"/>
-                    <TextBlock  Grid.Row="1"
-                                Height="30"
-                                Width="30"
-                                Foreground="White"
-                                Text="{Binding UpperValue, ElementName=SliderRange}"
-                                FontSize="15"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Top" Margin="0,10,0,0"/>
-                </Grid>
+               
                 
             </Grid>
             <Grid Grid.Row="10" Height="40" Width="260">
