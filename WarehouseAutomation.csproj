@@ -84,8 +84,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MVVM\Models\AbstractClass.cs" />
     <Compile Include="MVVM\Models\Applications.cs" />
-    <Compile Include="MVVM\Models\Interfaces.cs" />
     <Compile Include="MVVM\Models\Manager.cs" />
     <Compile Include="MVVM\Models\Product.cs" />
     <Compile Include="MVVM\Models\RetailOutlets.cs" />

@@ -6,38 +6,11 @@ using System.Threading.Tasks;
 
 namespace WarehouseAutomation.MVVM.Models
 {
-    public class Settings : ISettings
+    public class Settings
     {
-        private int _numberTypesProducts;
-
-        public int NumberTypesProducts
-        {
-            get { return _numberTypesProducts; }
-            set { _numberTypesProducts = value; }
-        }
-
-        private int _numberStores;
-
-        public int NumberStores
-        {
-            get { return _numberStores; }
-            set { _numberStores = value; }
-        }
-
-        private int _numberSimulationDays;
-
-        public int NumberSimulationDays
-        {
-            get { return _numberSimulationDays; }
-            set { _numberSimulationDays = value; }
-        }
-
-        private int _storageCapacityProduct;
-
-        public int StorageCapacityProduct
-        {
-            get { return _storageCapacityProduct; }
-            set { _storageCapacityProduct = value; }
-        }
+        public static int NumberTypesProducts { get; set; }
+        public static int NumberStores { get; set; }
+        public static int NumberSimulationDays { get; set; }
+        public static int StorageCapacityProduct { get; set; }
     }
 }

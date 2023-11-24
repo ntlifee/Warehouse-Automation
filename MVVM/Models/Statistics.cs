@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace WarehouseAutomation.MVVM.Models
 {
-    public class Statistics : IStatistics
+    public class Statistics
     {
-        public uint TotalApplications { get; set; }
-        public uint CompletedApplications { get; set; }
-        public uint RejectedApplications { get; set; }
-        public uint WarehouseProfit { get; set; }
-        public uint WarehouseLosses { get; set; }
+        public static uint NumberDays { get; set; }
+        public static uint TotalApplications { get; set; }
+        public static uint CompletedApplications { get; set; }
+        public static uint RejectedApplications { get; set; }
+        public static uint WarehouseProfit { get; set; }
+        public static uint WarehouseLosses { get; set; }
     }
 }

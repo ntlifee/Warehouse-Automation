@@ -6,9 +6,15 @@ using System.Threading.Tasks;
 
 namespace WarehouseAutomation.MVVM.Models
 {
-    public class Applications : IApplications
+    public class Applications
     {
+        /// <summary>
+        /// Название заказчика
+        /// </summary>
         public string Name { get; set; }
-        public Product product { get; set; }
+        /// <summary>
+        /// Тип и количество продуктов
+        /// </summary>
+        public Dictionary<string, int> Products { get; set; }
     }
 }

@@ -8,5 +8,6 @@ namespace WarehouseAutomation.MVVM.Models
 {
     public class Manager
     {
+
     }
 }
