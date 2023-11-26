@@ -44,6 +44,10 @@ namespace WarehouseAutomation.MVVM.Models
             }
             return products;
         }
+        /// <summary>
+        ///  Выборка продукта для заказа 
+        /// </summary>
+        /// <returns></returns>
         public Applications PreparationApplication()
         {
             Applications applications = new Applications();
@@ -57,6 +61,9 @@ namespace WarehouseAutomation.MVVM.Models
             }
             return applications;
         }
+        /// <summary>
+        /// Списание продуктов 
+        /// </summary>
         public void WriteOffProducts()
         {
             foreach (var product in Products)

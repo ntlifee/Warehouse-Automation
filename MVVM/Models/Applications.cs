@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace WarehouseAutomation.MVVM.Models
 {
+    /// <summary>
+    /// Заявка 
+    /// </summary>
     public class Applications
     {
         /// <summary>

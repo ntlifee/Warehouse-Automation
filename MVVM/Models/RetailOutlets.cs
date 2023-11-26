@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace WarehouseAutomation.MVVM.Models
 {
+    /// <summary>
+    /// Торговые точки 
+    /// </summary>
     public class RetailOutlets
     {
         Random Random = new Random();
@@ -17,6 +20,10 @@ namespace WarehouseAutomation.MVVM.Models
         /// Key - тип продукта, Value - список продуктов
         /// </summary>
         public Dictionary<string, List<Product>> Products { get; set; }
+        /// <summary>
+        /// Обработка заявки 
+        /// </summary>
+        /// <param name="products"></param>
         public void ApplicationProcessing(Dictionary<string, List<Product>> products)
         {
             foreach (var productName in products.Keys)
@@ -25,6 +32,10 @@ namespace WarehouseAutomation.MVVM.Models
             }
 
         }
+        /// <summary>
+        /// Выборка продукта для заказа 
+        /// </summary>
+        /// <returns></returns>
         public Applications PreparationApplication()
         {
             Applications applications = new Applications();
@@ -38,6 +49,9 @@ namespace WarehouseAutomation.MVVM.Models
             }
             return applications;
         }
+        /// <summary>
+        /// Списание продуктов 
+        /// </summary>
         public void WriteOffProducts()
         {
             foreach (var product in Products)
@@ -49,6 +63,9 @@ namespace WarehouseAutomation.MVVM.Models
                 }
             }
         }
+        /// <summary>
+        /// Продажа
+        /// </summary>
         public void Sales()
         {
             for (int i = Random.Next(0, Products.Count); i >= 0; i--)
