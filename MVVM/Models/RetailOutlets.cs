@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WarehouseAutomation.MVVM.Models
 {
@@ -10,71 +7,41 @@ namespace WarehouseAutomation.MVVM.Models
     /// Торговые точки 
     /// </summary>
     public class RetailOutlets
-    {
-        Random Random = new Random();
+    {        
+        public RetailOutlets(string name, List<string> nameProduct, Settings settings)
+        {
+            Name = name;
+            NameProduct = nameProduct;
+            Settings = settings;
+        }
         /// <summary>
         /// Название магазина
         /// </summary>
         public string Name { get; set; }
         /// <summary>
-        /// Key - тип продукта, Value - список продуктов
+        /// Виды доступных для заказа продуктов
         /// </summary>
-        public Dictionary<string, List<Product>> Products { get; set; }
-        /// <summary>
-        /// Обработка заявки 
-        /// </summary>
-        /// <param name="products"></param>
-        public void ApplicationProcessing(Dictionary<string, List<Product>> products)
-        {
-            foreach (var productName in products.Keys)
-            {
-                Products[productName].AddRange(products[productName]);
-            }
+        private List<string> NameProduct;
 
-        }
+        private Random Random = new Random();
+
+        private Settings Settings;
+
         /// <summary>
         /// Выборка продукта для заказа 
         /// </summary>
-        /// <returns></returns>
         public Applications PreparationApplication()
         {
-            Applications applications = new Applications();
-            applications.Name = $"OOO\"{Name}\"";
-            foreach (var product in Products)
+            List<string> TempProduct = new List<string>(NameProduct);
+            Applications applications = new Applications($"OOO\"{Name}\"", new Dictionary<string, int>());
+            int idx;
+            for (int i = 0; i < Random.Next(0, 20); i++)
             {
-                if (product.Value.Count < 10)
-                {
-                    applications.Products[product.Key] = 20 - product.Value.Count;
-                }
-            }
+                idx = Random.Next(0, TempProduct.Count);
+                applications._products[TempProduct[idx]] = Random.Next(0, Settings._storageCapacityProduct / Random.Next(Settings._lowerNumberRangeRandom, Settings._upperNumberRangeRandom));
+                TempProduct.RemoveAt(idx);
+            }            
             return applications;
-        }
-        /// <summary>
-        /// Списание продуктов 
-        /// </summary>
-        public void WriteOffProducts()
-        {
-            foreach (var product in Products)
-            {
-                product.Value.Sort();
-                while (product.Value.Last().ExpirationDate.CompareTo(DateTime.Now.AddDays(Statistics.NumberDays)) <= 0)
-                {
-                    product.Value.RemoveAt(product.Value.Count - 1);
-                }
-            }
-        }
-        /// <summary>
-        /// Продажа
-        /// </summary>
-        public void Sales()
-        {
-            for (int i = Random.Next(0, Products.Count); i >= 0; i--)
-            {
-                for (int j = Random.Next(0, Products.Values.Count); j >= 0; j--)
-                {
-                    Products.ElementAt(i).Value.RemoveAt(Random.Next(0, Products.ElementAt(i).Value.Count));
-                }
-            }
-        }
+        }        
     }
 }

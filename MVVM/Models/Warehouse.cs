@@ -10,14 +10,20 @@ namespace WarehouseAutomation.MVVM.Models
 {
     public class Warehouse
     {
+        private Settings _settings;
+        private Statistics _statisticsDay;
+        private Random Random;
+        public Warehouse(Settings settings, Statistics statisticsDay)
+        {
+            _settings = settings;
+            _statisticsDay = statisticsDay;
+            CapacityWarehouse = _settings._storageCapacityProduct;
+            Random = new Random();
+        }
         /// <summary>
-        /// Общая вместимость склада
+        /// Вместимость склада по видим продукта 
         /// </summary>
-        public uint CapacityWarehouse { get; set; }
-        /// <summary>
-        /// Количество продуктов на складе
-        /// </summary>
-        public uint CountProduct { get; set; }
+        public int CapacityWarehouse { get; set; }
         /// <summary>
         /// Key - тип продукта, Value - список продуктов
         /// </summary>
@@ -28,50 +34,81 @@ namespace WarehouseAutomation.MVVM.Models
         /// <param name="application">Заявка</param>
         public Dictionary<string, List<Product>> ApplicationProcessing(Applications application)
         {
+            _statisticsDay._totalApplications++;
             Dictionary<string, List<Product>> products = new Dictionary<string, List<Product>>();
-            foreach (var product in application.Products)
+            if (Random.Next(_settings._lowerNumberRangeRandom, _settings._upperNumberRangeRandom) <= 7)
             {
-                if (Products[product.Key].Count < product.Value)
+                _statisticsDay._completedApplications++;
+                foreach (var product in application._products)
                 {
-                    products[product.Key] = new List<Product>(Products[product.Key]);
-                    Products[product.Key].Clear();
+                    if (Products[product.Key].Count < product.Value)
+                    {
+                        products[product.Key] = new List<Product>(Products[product.Key]);
+                        Products[product.Key].Clear();
+                    }
+                    else
+                    {
+                        products[product.Key] = new List<Product>(Products[product.Key].GetRange(Products[product.Key].Count - product.Value, product.Value));
+                        Products[product.Key].RemoveRange(Products[product.Key].Count - product.Value, product.Value);
+                    }
+                    foreach (var item in products[product.Key])
+                    {
+                        _statisticsDay._warehouseProfit += (int)item._priceSell - (int)item._priceBuy;
+                    }
                 }
-                else
-                {
-                    products[product.Key] = new List<Product>(Products[product.Key].GetRange(Products[product.Key].Count - product.Value, product.Value));
-                    Products[product.Key].RemoveRange(Products[product.Key].Count - product.Value, product.Value);
-                }
+            }
+            else
+            {
+                _statisticsDay._rejectedApplications++;
             }
             return products;
         }
         /// <summary>
-        ///  Выборка продукта для заказа 
+        ///  Заказ продуктов на склад
         /// </summary>
-        /// <returns></returns>
-        public Applications PreparationApplication()
+        public void OrderingProductsWarehouse()
         {
-            Applications applications = new Applications();
-            applications.Name = "OOO\"Склад\"";
+            uint Price;
             foreach (var product in Products)
             {
-                if (product.Value.Count < 10)
+                if (product.Value.Count < 40)
                 {
-                    applications.Products[product.Key] = Settings.StorageCapacityProduct - product.Value.Count;
+                    for(int i = 0; i < CapacityWarehouse - product.Value.Count; i++)
+                    {
+                        Price = Convert.ToUInt32(Random.Next(_settings._lowerNumberRangeRandom, _settings._upperNumberRangeRandom)
+                            * Random.Next(_settings._lowerNumberRangeRandom, _settings._upperNumberRangeRandom)
+                            * Random.Next(_settings._lowerNumberRangeRandom, _settings._upperNumberRangeRandom));
+                        product.Value.Add(
+                        new Product
+                        (
+                            (byte)Random.Next(_settings._lowerNumberRangeRandom - 4, _settings._upperNumberRangeRandom - 7),
+                            Price,
+                            Convert.ToUInt32(Price * 1.1),
+                            DateTime.Now.AddDays(Random.Next(_settings._lowerNumberRangeRandom + 5, _settings._upperNumberRangeRandom + 5)))
+                        );
+                    }                    
                 }
             }
-            return applications;
         }
         /// <summary>
-        /// Списание продуктов 
+        /// Проверка продуктов 
         /// </summary>
         public void WriteOffProducts()
         {
+            int days;
             foreach (var product in Products)
             {
-                product.Value.Sort();
-                while (product.Value.Last().ExpirationDate.CompareTo(DateTime.Now.AddDays(Statistics.NumberDays)) <= 0)
+                for(int i = 0; i < product.Value.Count;i ++)
                 {
-                    product.Value.RemoveAt(product.Value.Count - 1);
+                    days = product.Value[i]._expirationDate.CompareTo(product.Value[i]._expirationDate.AddDays(_statisticsDay._numberDays));
+                    if (days <= 0)
+                    {
+                        product.Value.RemoveAt(i);
+                    }
+                    else if (days <= 5)
+                    {
+                        product.Value[i]._priceSell -= Convert.ToUInt32(product.Value[i]._priceSell * 0.25);
+                    }
                 }
             }
         }

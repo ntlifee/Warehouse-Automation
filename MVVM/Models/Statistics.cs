@@ -11,29 +11,39 @@ namespace WarehouseAutomation.MVVM.Models
     /// </summary>
     public class Statistics
     {
+        //public Statistics(uint NumberDays, uint TotalApplications, uint CompletedApplications, uint RejectedApplications, uint WarehouseProfit, uint WarehouseLosses)
+        //{
+                
+        //}
+
         /// <summary>
         /// День моделирования
         /// </summary>
-        public static uint NumberDays { get; set; }
+        public uint _numberDays { get; set; }
         /// <summary>
         /// Количество заявок
         /// </summary>
-        public static uint TotalApplications { get; set; }
+        public uint _totalApplications { get; set; }
         /// <summary>
         /// Выполнено заявок 
         /// </summary>
-        public static uint CompletedApplications { get; set; }
+        public uint _completedApplications { get; set; }
         /// <summary>
         /// Отклоненные заявки
         /// </summary>
-        public static uint RejectedApplications { get; set; }
+        public uint _rejectedApplications { get; set; }
         /// <summary>
         /// Прибыль склада
         /// </summary>
-        public static uint WarehouseProfit { get; set; }
-        /// <summary>
-        /// Складские потери
-        /// </summary>
-        public static uint WarehouseLosses { get; set; }
+        public int _warehouseProfit { get; set; }
+
+        public void AddStatistics(Statistics statistics)
+        {
+            _numberDays = statistics._numberDays;
+            _totalApplications += statistics._totalApplications;
+            _completedApplications += statistics._completedApplications;
+            _rejectedApplications += statistics._rejectedApplications;
+            _warehouseProfit += statistics._warehouseProfit;
+        }
     }
 }

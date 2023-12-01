@@ -159,7 +159,7 @@
                                  Minimum="0" Maximum="{Binding Value, ElementName=SliderShops }"
                                  TickPlacement="BottomRight"
                                  AutoToolTipPlacement="TopLeft"
-                                 LowerValue="0" UpperValue="3"
+                                 LowerValue="4" UpperValue="10"
                                  >
 
                         

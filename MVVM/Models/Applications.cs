@@ -11,13 +11,18 @@ namespace WarehouseAutomation.MVVM.Models
     /// </summary>
     public class Applications
     {
+        public Applications(string Name, Dictionary<string, int> products)
+        {
+            _name = Name;
+            _products = products;
+        }
         /// <summary>
         /// Название заказчика
         /// </summary>
-        public string Name { get; set; }
+        public string _name { get; set; }
         /// <summary>
         /// Тип и количество продуктов
         /// </summary>
-        public Dictionary<string, int> Products { get; set; }
+        public Dictionary<string, int> _products { get; set; }
     }
 }
