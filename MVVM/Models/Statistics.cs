@@ -19,7 +19,7 @@ namespace WarehouseAutomation.MVVM.Models
         /// <summary>
         /// День моделирования
         /// </summary>
-        public uint _numberDays { get; set; }
+        public static uint _numberDays { get; set; }
         /// <summary>
         /// Количество заявок
         /// </summary>
@@ -39,7 +39,6 @@ namespace WarehouseAutomation.MVVM.Models
 
         public void AddStatistics(Statistics statistics)
         {
-            _numberDays = statistics._numberDays;
             _totalApplications += statistics._totalApplications;
             _completedApplications += statistics._completedApplications;
             _rejectedApplications += statistics._rejectedApplications;

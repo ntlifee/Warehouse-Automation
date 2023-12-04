@@ -100,7 +100,7 @@ namespace WarehouseAutomation.MVVM.Models
             {
                 for(int i = 0; i < product.Value.Count;i ++)
                 {
-                    days = product.Value[i]._expirationDate.CompareTo(product.Value[i]._expirationDate.AddDays(_statisticsDay._numberDays));
+                    days = product.Value[i]._expirationDate.CompareTo(product.Value[i]._expirationDate.AddDays(Statistics._numberDays));
                     if (days <= 0)
                     {
                         product.Value.RemoveAt(i);

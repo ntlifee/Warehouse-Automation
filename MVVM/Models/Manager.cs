@@ -57,10 +57,32 @@ namespace WarehouseAutomation.MVVM.Models
         }
         public void TimerStart(DispatcherTimer _timer)
         {
-            // _timer.Tick += new EventHandler(dispatcherTimer_Tick);
+            _timer.Tick += new EventHandler(dispatcherTimer_Tick);
             _timer.Interval = new TimeSpan(0, 0, 1);
             _timer.Start();
-        }  
+        }
+        /// <summary>
+        /// моделирование
+        /// </summary>
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            Statistics._numberDays++;
+            int countApplication = _random.Next(0, _retailOutlets.Count);
+            List<RetailOutlets> temp_retailOutlets = new List<RetailOutlets>(_retailOutlets);
+            int numberRetailOutlets;
+            for (int i = 0; i < countApplication; i++)
+            {
+                numberRetailOutlets = _random.Next(0, temp_retailOutlets.Count - 1);
+                //вывод сообщения, что магазин сделал заказ
+                _warehouse.ApplicationProcessing(temp_retailOutlets[numberRetailOutlets].PreparationApplication());
+                //вывод сообщения, что склад выполнил заказ
+                temp_retailOutlets.RemoveAt(numberRetailOutlets);
+            }
+            _warehouse.WriteOffProducts();
+            _warehouse.OrderingProductsWarehouse();
+            _statisticsAll.AddStatistics(_statisticsDay);
+        }
+
         /// <summary>
         /// Занесение типов продуктов на склад и его пополнение 
         /// </summary>
