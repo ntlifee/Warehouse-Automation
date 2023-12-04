@@ -5,6 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:views="clr-namespace:WarehouseAutomation.MVVM.View"
+             Name="ControllSettings"
+             DataContext="{Binding Settings}"
              mc:Ignorable="d" 
              Height="560" Width="260">
     <Grid>
@@ -35,7 +37,7 @@
                 </Grid.ColumnDefinitions>
                 <Slider Grid.Column="0"
                         x:Name="SliderProduct"
-                        Value="16" 
+                        Value="{Binding NumberTypesProducts}" 
                         Minimum="12" 
                         Maximum="20"                             
                         Height="35"
@@ -63,7 +65,7 @@
                     <ColumnDefinition Width="40"/>
                 </Grid.ColumnDefinitions>
                 <Slider x:Name="SliderShops"
-                        Value="6" 
+                        Value="{Binding NumberStores}" 
                         Minimum="3" 
                         Maximum="9"                             
                         Height="40"
@@ -91,7 +93,7 @@
                     <ColumnDefinition Width="40"/>
                 </Grid.ColumnDefinitions>
                 <Slider x:Name="SliderSimulations"
-                        Value="20" 
+                        Value="{Binding NumberSimulationDays}" 
                         Minimum="10" 
                         Maximum="30"                             
                         Height="40"
@@ -119,7 +121,7 @@
                     <ColumnDefinition Width="40"/>
                 </Grid.ColumnDefinitions>
                 <Slider x:Name="SliderWarehouse"
-                        Value="75" 
+                        Value="{Binding StorageCapacityProduct}" 
                         Minimum="50" 
                         Maximum="100"                             
                         Height="40"
@@ -156,25 +158,16 @@
                                  TickFrequency="1"                                             
                                  IsSnapToTickEnabled="True" 
                                  ExtendedMode ="True"                                 
-                                 Minimum="0" Maximum="{Binding Value, ElementName=SliderShops }"
+                                 Minimum="5" Maximum="10"
                                  TickPlacement="BottomRight"
                                  AutoToolTipPlacement="TopLeft"
-                                 LowerValue="4" UpperValue="10"
+                                 LowerValue="{Binding LowerNumberRangeRandom}" UpperValue="{Binding UpperNumberRangeRandom}"
                                  >
 
-                        
+
                 </mah:RangeSlider>
-               
-                
-            </Grid>
-            <Grid Grid.Row="10" Height="40" Width="260">
-                <Button Command="{Binding ButtonNext}" 
-                        Content="Сохранить" 
-                        HorizontalAlignment="Right"
-                        Width="100" 
-                        Height="30"
-                        VerticalAlignment="Center" 
-                        Style="{DynamicResource DefaultButtonStyle}"/>
+
+
             </Grid>
         </Grid>
     </Grid>

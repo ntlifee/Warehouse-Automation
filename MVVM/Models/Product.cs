@@ -16,28 +16,28 @@ namespace WarehouseAutomation.MVVM.Models
         {
                 
         }
-        public Product(byte Volume, uint PriceBuy, uint PriceSell, DateTime ExpirationDate)
+        public Product(byte volume, uint priceBuy, uint priceSell, DateTime expirationDate)
         {
-            _volume = Volume;
-            _priceBuy = PriceBuy;
-            _priceSell = PriceSell;
-            _expirationDate = ExpirationDate;
+            Volume = volume;
+            PriceBuy = priceBuy;
+            PriceSell = priceSell;
+            ExpirationDate = expirationDate;
         }
         /// <summary>
         /// Объем
         /// </summary>
-        public byte _volume { get; set; }
+        public byte Volume { get; set; }
         /// <summary>
         /// Цена покупки
         /// </summary>
-        public uint _priceBuy { get; set; }
+        public uint PriceBuy { get; set; }
         /// <summary>
         /// Цена продажи
         /// </summary>
-        public uint _priceSell { get; set; }
+        public uint PriceSell { get; set; }
         /// <summary>
         /// Срок годности
         /// </summary>
-        public DateTime _expirationDate { get; set; }
+        public DateTime ExpirationDate { get; set; }
     }
 }

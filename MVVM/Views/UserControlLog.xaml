@@ -4,15 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:views="clr-namespace:WarehouseAutomation.MVVM.View"
+             x:Name="UserTest"
              mc:Ignorable="d" 
              Width="500" Height="660">
     <Grid>
-        <ListBox ItemsSource="{Binding Logs}" Margin="499,0,-499,0">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding ItemLogs}" />
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <ListBox ItemsSource="{Binding Logs}" />
     </Grid>
 </UserControl>

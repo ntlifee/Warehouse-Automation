@@ -38,7 +38,7 @@ namespace WarehouseAutomation.MVVM.Models
             for (int i = 0; i < Random.Next(0, 20); i++)
             {
                 idx = Random.Next(0, TempProduct.Count);
-                applications._products[TempProduct[idx]] = Random.Next(0, Settings._storageCapacityProduct / Random.Next(Settings._lowerNumberRangeRandom, Settings._upperNumberRangeRandom));
+                applications._products[TempProduct[idx]] = Random.Next(0, Settings.StorageCapacityProduct / Random.Next(Settings.LowerNumberRangeRandom, Settings.UpperNumberRangeRandom));
                 TempProduct.RemoveAt(idx);
             }            
             return applications;

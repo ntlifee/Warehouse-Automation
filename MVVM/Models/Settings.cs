@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.Mvvm;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,44 +10,44 @@ namespace WarehouseAutomation.MVVM.Models
     /// <summary>
     /// Настройки 
     /// </summary>
-    public class Settings
+    public class Settings : BindableBase
     {
         public Settings()
         {
                 
         }
-        public Settings(int NumberTypesProducts, int NumberStores, int NumberSimulationDays, int StorageCapacityProduct, int LowerNumberRangeRandom, int UpperNumberRangeRandom)
+        public Settings(int numberTypesProducts, int numberStores, int numberSimulationDays, int storageCapacityProduct, int lowerNumberRangeRandom, int upperNumberRangeRandom)
         {
-            _numberTypesProducts = NumberTypesProducts;
-            _numberStores = NumberStores;
-            _numberSimulationDays = NumberSimulationDays;
-            _storageCapacityProduct = StorageCapacityProduct;
-            _lowerNumberRangeRandom = LowerNumberRangeRandom;
-            _upperNumberRangeRandom = UpperNumberRangeRandom;
+            NumberTypesProducts = numberTypesProducts;
+            NumberStores = numberStores;
+            NumberSimulationDays = numberSimulationDays;
+            StorageCapacityProduct = storageCapacityProduct;
+            LowerNumberRangeRandom = lowerNumberRangeRandom;
+            UpperNumberRangeRandom = upperNumberRangeRandom;
         }
         /// <summary>
         /// Количество видов продуктов 
         /// </summary>
-        public int _numberTypesProducts { get; set; }
+        public int NumberTypesProducts { get; set; } = 16;
         /// <summary>
         /// Количество торговых точек 
         /// </summary>
-        public int _numberStores { get; set; }
+        public int NumberStores { get; set; } = 6;
         /// <summary>
         /// Количество дней моделирования
         /// </summary>
-        public int _numberSimulationDays { get; set; }
+        public int NumberSimulationDays { get; set; } = 20;
         /// <summary>
         /// Вместимость склада для продуктов 
         /// </summary>
-        public int _storageCapacityProduct { get; set; }
+        public int StorageCapacityProduct { get; set; } = 75;
         /// <summary>
         /// Нижнее число диапазона случайных чисел
         /// </summary>
-        public int _lowerNumberRangeRandom { get; set; }
+        public int LowerNumberRangeRandom { get; set; } = 5;
         /// <summary>
         /// Верхнее число диапазона случайных чисел
         /// </summary>
-        public int _upperNumberRangeRandom { get; set; }
+        public int UpperNumberRangeRandom { get; set; } = 10;
     }
 }

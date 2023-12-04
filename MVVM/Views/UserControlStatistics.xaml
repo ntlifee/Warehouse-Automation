@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:views="clr-namespace:WarehouseAutomation.MVVM.View"
+             DataContext="{Binding Statistics}"
              mc:Ignorable="d" 
              Height="660" Width="300"
              >
@@ -24,6 +25,16 @@
         <Grid Grid.Row="2" Height="600" Width="300">
             <StackPanel Margin="10 0 10 10">
                 <!--Сделать как надо -->
+                <TextBlock Text="День моделирования:" 
+                           Foreground ="White" 
+                           FontSize="15" 
+                           Padding="0 10 10 10" />
+                <TextBlock x:Name="ModelingDay"  
+                           Padding="4" 
+                           Foreground ="White" 
+                           FontSize="15" 
+                           Width="160" 
+                           HorizontalAlignment="Left"/>
                 <TextBlock Text="Всего заявок:" 
                Foreground ="White" 
                FontSize="15" 
@@ -32,7 +43,8 @@
                Padding="4" Foreground ="White" 
                FontSize="15" 
                Width="160" 
-               HorizontalAlignment="Left"/>
+               HorizontalAlignment="Left"
+               Text="{Binding TotalApplications}"/>
                 <TextBlock Text="Выполнено заявок:" 
                Foreground ="White" 
                FontSize="15" 
@@ -41,7 +53,8 @@
                Padding="4" 
                Foreground ="White"
                FontSize="15" Width="160" 
-               HorizontalAlignment="Left"/>
+               HorizontalAlignment="Left"
+               Text="{Binding CompletedApplications}"/>
                 <TextBlock Text="Отклонено заявок:" 
                Foreground ="White" 
                FontSize="15"
@@ -49,7 +62,8 @@
                 <TextBlock x:Name="SizePackaging2" 
                Padding="4" Foreground ="White" 
                FontSize="15" Width="160" 
-               HorizontalAlignment="Left"/>
+               HorizontalAlignment="Left"
+               Text="{Binding RejectedApplications}"/>
                 <TextBlock Text="Прибыль склада:" 
                Foreground ="White"
                FontSize="15"
@@ -58,17 +72,9 @@
                Padding="4" 
                Foreground ="White" 
                FontSize="15" Width="160" 
-               HorizontalAlignment="Left"/>
-                <TextBlock Text="Потери склада:" 
-               Foreground ="White" 
-               FontSize="15" 
-               Padding="0 10 10 10" />
-                <TextBlock x:Name="SizePackaging5"  
-               Padding="4" 
-               Foreground ="White" 
-               FontSize="15" 
-               Width="160" 
-               HorizontalAlignment="Left"/>
+               HorizontalAlignment="Left"
+                Text="{Binding WarehouseProfit}"/>
+                
             </StackPanel>
         </Grid>
     </Grid>

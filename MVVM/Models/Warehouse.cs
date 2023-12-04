@@ -17,7 +17,7 @@ namespace WarehouseAutomation.MVVM.Models
         {
             _settings = settings;
             _statisticsDay = statisticsDay;
-            CapacityWarehouse = _settings._storageCapacityProduct;
+            CapacityWarehouse = _settings.StorageCapacityProduct;
             Random = new Random();
         }
         /// <summary>
@@ -34,11 +34,11 @@ namespace WarehouseAutomation.MVVM.Models
         /// <param name="application">Заявка</param>
         public Dictionary<string, List<Product>> ApplicationProcessing(Applications application)
         {
-            _statisticsDay._totalApplications++;
+            _statisticsDay.TotalApplications++;
             Dictionary<string, List<Product>> products = new Dictionary<string, List<Product>>();
-            if (Random.Next(_settings._lowerNumberRangeRandom, _settings._upperNumberRangeRandom) <= 7)
+            if (Random.Next(_settings.LowerNumberRangeRandom, _settings.UpperNumberRangeRandom) <= 7)
             {
-                _statisticsDay._completedApplications++;
+                _statisticsDay.CompletedApplications++;
                 foreach (var product in application._products)
                 {
                     if (Products[product.Key].Count < product.Value)
@@ -53,13 +53,13 @@ namespace WarehouseAutomation.MVVM.Models
                     }
                     foreach (var item in products[product.Key])
                     {
-                        _statisticsDay._warehouseProfit += (int)item._priceSell - (int)item._priceBuy;
+                        _statisticsDay.WarehouseProfit += (int)item.PriceSell - (int)item.PriceBuy;
                     }
                 }
             }
             else
             {
-                _statisticsDay._rejectedApplications++;
+                _statisticsDay.RejectedApplications++;
             }
             return products;
         }
@@ -75,16 +75,16 @@ namespace WarehouseAutomation.MVVM.Models
                 {
                     for(int i = 0; i < CapacityWarehouse - product.Value.Count; i++)
                     {
-                        Price = Convert.ToUInt32(Random.Next(_settings._lowerNumberRangeRandom, _settings._upperNumberRangeRandom)
-                            * Random.Next(_settings._lowerNumberRangeRandom, _settings._upperNumberRangeRandom)
-                            * Random.Next(_settings._lowerNumberRangeRandom, _settings._upperNumberRangeRandom));
+                        Price = Convert.ToUInt32(Random.Next(_settings.LowerNumberRangeRandom, _settings.UpperNumberRangeRandom)
+                            * Random.Next(_settings.LowerNumberRangeRandom, _settings.UpperNumberRangeRandom)
+                            * Random.Next(_settings.LowerNumberRangeRandom, _settings.UpperNumberRangeRandom));
                         product.Value.Add(
                         new Product
                         (
-                            (byte)Random.Next(_settings._lowerNumberRangeRandom - 4, _settings._upperNumberRangeRandom - 7),
+                            (byte)Random.Next(_settings.LowerNumberRangeRandom - 4, _settings.UpperNumberRangeRandom - 7),
                             Price,
                             Convert.ToUInt32(Price * 1.1),
-                            DateTime.Now.AddDays(Random.Next(_settings._lowerNumberRangeRandom + 5, _settings._upperNumberRangeRandom + 5)))
+                            DateTime.Now.AddDays(Random.Next(_settings.LowerNumberRangeRandom + 5, _settings.UpperNumberRangeRandom + 5)))
                         );
                     }                    
                 }
@@ -100,14 +100,14 @@ namespace WarehouseAutomation.MVVM.Models
             {
                 for(int i = 0; i < product.Value.Count;i ++)
                 {
-                    days = product.Value[i]._expirationDate.CompareTo(product.Value[i]._expirationDate.AddDays(Statistics._numberDays));
+                    days = product.Value[i].ExpirationDate.CompareTo(product.Value[i].ExpirationDate.AddDays(Statistics.NumberDays));
                     if (days <= 0)
                     {
                         product.Value.RemoveAt(i);
                     }
                     else if (days <= 5)
                     {
-                        product.Value[i]._priceSell -= Convert.ToUInt32(product.Value[i]._priceSell * 0.25);
+                        product.Value[i].PriceSell -= Convert.ToUInt32(product.Value[i].PriceSell * 0.25);
                     }
                 }
             }
