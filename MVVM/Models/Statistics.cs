@@ -20,7 +20,7 @@ namespace WarehouseAutomation.MVVM.Models
         /// <summary>
         /// День моделирования
         /// </summary>
-        public static uint NumberDays { get; set; }
+        public uint NumberDays { get; set; }
         /// <summary>
         /// Количество заявок
         /// </summary>
@@ -38,19 +38,13 @@ namespace WarehouseAutomation.MVVM.Models
         /// </summary>
         public int WarehouseProfit { get; set; }
 
-        public void AddStatistics(Statistics statistics)
+        public void DefaultStatistics()
         {
-            TotalApplications += statistics.TotalApplications;
-            CompletedApplications += statistics.CompletedApplications;
-            RejectedApplications += statistics.RejectedApplications;
-            WarehouseProfit += statistics.WarehouseProfit;
-        }
-        public void ChangeStatistics(Statistics statistics)
-        {
-            TotalApplications = statistics.TotalApplications;
-            CompletedApplications = statistics.CompletedApplications;
-            RejectedApplications = statistics.RejectedApplications;
-            WarehouseProfit = statistics.WarehouseProfit;
+            NumberDays = 0;
+            TotalApplications = 0;
+            CompletedApplications = 0;
+            RejectedApplications = 0;
+            WarehouseProfit = 0;
         }
     }
 }

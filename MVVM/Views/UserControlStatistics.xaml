@@ -28,13 +28,15 @@
                 <TextBlock Text="День моделирования:" 
                            Foreground ="White" 
                            FontSize="15" 
-                           Padding="0 10 10 10" />
+                           Padding="0 10 10 10"
+                           />
                 <TextBlock x:Name="ModelingDay"  
                            Padding="4" 
                            Foreground ="White" 
                            FontSize="15" 
                            Width="160" 
-                           HorizontalAlignment="Left"/>
+                           HorizontalAlignment="Left"
+                           Text="{Binding NumberDays}"/>
                 <TextBlock Text="Всего заявок:" 
                Foreground ="White" 
                FontSize="15" 

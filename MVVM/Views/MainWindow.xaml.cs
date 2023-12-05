@@ -31,9 +31,5 @@ namespace WarehouseAutomation
         private void WindowMove(object sender, MouseButtonEventArgs e) { if (Mouse.LeftButton == MouseButtonState.Pressed) DragMove(); }
         private void ButtonClose_Click(object sender, RoutedEventArgs e) => Process.GetCurrentProcess().Kill();
         private void ButtonCollapse_Click(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;
-
-        private void ButtonStartSimul_Click(object sender, RoutedEventArgs e)
-        {
-        }
     }
 }

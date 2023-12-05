@@ -55,7 +55,7 @@
                     <ColumnDefinition Width="500"/>
                     <ColumnDefinition Width="300"/>
                 </Grid.ColumnDefinitions>
-                
+
                 <Border Grid.Column="0" BorderBrush="#FF696969" BorderThickness="0 0 2 2">
                     <Grid>
                         <Grid.RowDefinitions>
@@ -81,24 +81,25 @@
                                         <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="150"/>
                                     </Grid.ColumnDefinitions>
-                                    
+
                                     <Grid Grid.Column="0" Height="30" Width="150">
                                         <Button x:Name="ButtonStartSimul" 
-                                                Command="{Binding ButtonHaracteris}" 
+                                                Command="{Binding StartCommand}" 
                                                 Content="Старт" 
                                                 HorizontalAlignment="Right" 
                                                 Width="50"
                                                 Margin="0 0 10 0" 
                                                 VerticalAlignment="Center" 
-                                                Style="{DynamicResource DefaultButtonStyle}" Click="ButtonStartSimul_Click"/>
+                                                Style="{DynamicResource DefaultButtonStyle}"/>
                                     </Grid>
                                     <Grid Grid.Column="2" Height="30" Width="150">
                                         <Button x:Name="ButtonStopSimul" 
+                                                Command="{Binding StopCommand}"
                                                 Content="Стоп" 
                                                 HorizontalAlignment="Left" 
                                                 Width="50"
-                                                Margin="10 0 0 0" 
-                                                VerticalAlignment="Center" 
+                                                Margin="10,0,0,5" 
+                                                VerticalAlignment="Bottom" 
                                                 Style="{DynamicResource DefaultButtonStyle}"/>
                                     </Grid>
                                 </Grid>
@@ -109,7 +110,7 @@
                             <!--Настройки модеирования-->
                             <views:UserControlSettings Visibility="Visible"/>
                         </Grid>
-                        
+
                     </Grid>
                 </Border>
 

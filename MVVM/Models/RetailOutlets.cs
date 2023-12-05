@@ -11,8 +11,9 @@ namespace WarehouseAutomation.MVVM.Models
         public RetailOutlets(string name, List<string> nameProduct, Settings settings)
         {
             Name = name;
-            NameProduct = nameProduct;
-            Settings = settings;
+            _nameProduct = nameProduct;
+            _settings = settings;
+            _random = new Random();
         }
         /// <summary>
         /// Название магазина
@@ -21,24 +22,24 @@ namespace WarehouseAutomation.MVVM.Models
         /// <summary>
         /// Виды доступных для заказа продуктов
         /// </summary>
-        private List<string> NameProduct;
+        private List<string> _nameProduct;
 
-        private Random Random = new Random();
+        private Random _random;
 
-        private Settings Settings;
+        private Settings _settings;
 
         /// <summary>
         /// Выборка продукта для заказа 
         /// </summary>
         public Applications PreparationApplication()
         {
-            List<string> TempProduct = new List<string>(NameProduct);
+            List<string> TempProduct = new List<string>(_nameProduct);
             Applications applications = new Applications($"OOO\"{Name}\"", new Dictionary<string, int>());
             int idx;
-            for (int i = 0; i < Random.Next(0, 20); i++)
+            for (int i = _random.Next(10, 20); i >= 0; i--)
             {
-                idx = Random.Next(0, TempProduct.Count);
-                applications._products[TempProduct[idx]] = Random.Next(0, Settings.StorageCapacityProduct / Random.Next(Settings.LowerNumberRangeRandom, Settings.UpperNumberRangeRandom));
+                idx = _random.Next(0, TempProduct.Count);
+                applications.Products[TempProduct[idx]] = _settings.StorageCapacityProduct / _random.Next(_settings.LowerNumberRangeRandom - 3, _settings.UpperNumberRangeRandom - 3);
                 TempProduct.RemoveAt(idx);
             }            
             return applications;

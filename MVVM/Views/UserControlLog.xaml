@@ -8,6 +8,9 @@
              mc:Ignorable="d" 
              Width="500" Height="660">
     <Grid>
-        <ListBox ItemsSource="{Binding Logs}" />
+        <ListBox Background="Transparent" 
+                 ItemsSource="{Binding Logs}" 
+                 ItemContainerStyle="{StaticResource myLBStyle}"
+                 Foreground="White"/>
     </Grid>
 </UserControl>

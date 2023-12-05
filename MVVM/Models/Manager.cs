@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web.WebSockets;
+using System.Windows.Input;
 using System.Windows.Threading;
 
 namespace WarehouseAutomation.MVVM.Models
@@ -16,17 +18,20 @@ namespace WarehouseAutomation.MVVM.Models
     public class Manager : BindableBase
     {
         public Statistics Statistics { get; set; }
-        private Statistics _statisticsAll;
         public Settings Settings { get; set; }
-        public List<RetailOutlets> _retailOutlets;
-        public Warehouse _warehouse;
-        public DispatcherTimer _timer;
-        public List<string> NameProduct;
-        public ObservableCollection<string> Logs { get; set; } = new ObservableCollection<string>();
+        private List<RetailOutlets> _retailOutlets;
+        private Warehouse _warehouse;
+        private DispatcherTimer _timer;
+        private List<string> _nameProduct;
+        public ICommand StartCommand { get; }
+        public ICommand StopCommand { get; }
+        public ObservableCollection<string> Logs { get; set; }
         private Random _random;
         public Manager()
         {
-            NameProduct = new List<string>()
+            StartCommand = new DelegateCommand(() => TimerStart());
+            StopCommand = new DelegateCommand(() => TimerStop());
+            _nameProduct = new List<string>()
             {
                 "Яйца",
                 "Молоко",
@@ -50,18 +55,25 @@ namespace WarehouseAutomation.MVVM.Models
                 "Кофе"
             };
             Settings = new Settings();
-            _random = new Random();
             Statistics = new Statistics();
-            _statisticsAll = new Statistics();
+            Logs = new ObservableCollection<string>();
+            _random = new Random();
             _warehouse = Warehouse();
-            _retailOutlets = RetailOutlets();
             _timer = new DispatcherTimer();       
         }
         public void TimerStart()
         {
+            Statistics.DefaultStatistics();
+            _retailOutlets = RetailOutlets();
+            Logs.Clear();
             _timer.Tick += new EventHandler(dispatcherTimer_Tick);
             _timer.Interval = new TimeSpan(0, 0, 1);
             _timer.Start();
+        }
+        public void TimerStop()
+        {            
+            _timer.Tick -= new EventHandler(dispatcherTimer_Tick);
+            _timer.Stop();
         }
         /// <summary>
         /// моделирование
@@ -69,27 +81,27 @@ namespace WarehouseAutomation.MVVM.Models
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
             Statistics.NumberDays++;
-            int countApplication = _random.Next(0, _retailOutlets.Count);
+            Logs.Add($"Начался день {Statistics.NumberDays}.");
+            _warehouse.WriteOffProducts();
+            Logs.Add($"     Склад выполнил уценку продуктов.");
+            _warehouse.OrderingProductsWarehouse();
+            Logs.Add($"     Склад выполнил заказ недостающих продуктов.");
+            int countApplication = _random.Next(_retailOutlets.Count / 2, _retailOutlets.Count);
             List<RetailOutlets> temp_retailOutlets = new List<RetailOutlets>(_retailOutlets);
             int numberRetailOutlets;
             for (int i = 0; i < countApplication; i++)
             {
-                numberRetailOutlets = _random.Next(0, temp_retailOutlets.Count - 1);
-                Logs.Add($"Начался день {Statistics.NumberDays}.");
+                numberRetailOutlets = _random.Next(0, temp_retailOutlets.Count - 1);                
                 //вывод сообщения, что магазин сделал заказ
-                Logs.Add($"{_retailOutlets[numberRetailOutlets].Name} сделал заказ.");
+                Logs.Add($"     {temp_retailOutlets[numberRetailOutlets].Name} сделал заказ.");
                 _warehouse.ApplicationProcessing(temp_retailOutlets[numberRetailOutlets].PreparationApplication());
                 //вывод сообщения, что склад выполнил заказ
-                Logs.Add($"Склад выполнил заказ для {_retailOutlets[numberRetailOutlets].Name}.");
+                Logs.Add($"     Склад выполнил заказ для {temp_retailOutlets[numberRetailOutlets].Name}.");
                 temp_retailOutlets.RemoveAt(numberRetailOutlets);
-            }
-            _warehouse.WriteOffProducts();
-            _warehouse.OrderingProductsWarehouse();
-            _statisticsAll.AddStatistics(Statistics);
+            }           
             if (Statistics.NumberDays == Settings.NumberSimulationDays)
             {
-                Statistics.ChangeStatistics(_statisticsAll);
-                _timer.Stop();
+                TimerStop();
             }
         }
 
@@ -100,7 +112,7 @@ namespace WarehouseAutomation.MVVM.Models
         {
             Warehouse warehouse = new Warehouse(Settings, Statistics);
             warehouse.Products = new Dictionary<string, List<Product>>();
-            List<string> TempProduct = new List<string>(NameProduct);
+            List<string> TempProduct = new List<string>(_nameProduct);
             int idx;
             for (int i = 0; i < Settings.NumberTypesProducts; i++)
             {
@@ -119,7 +131,7 @@ namespace WarehouseAutomation.MVVM.Models
             List<RetailOutlets> retailOutlets = new List<RetailOutlets>();
             for (int i = 1; i <= Settings.NumberStores; i++)
             {
-                retailOutlets.Add(new RetailOutlets($"Магазин #{i}", NameProduct, Settings));
+                retailOutlets.Add(new RetailOutlets($"Магазин #{i}", _nameProduct, Settings));
             }
             return retailOutlets;
         }
