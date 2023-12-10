@@ -50,7 +50,8 @@
                         TickFrequency = "1"
                         Foreground ="#FF696969"
                         Focusable="False"
-                        TickPlacement ="BottomRight"/>
+                        TickPlacement ="BottomRight"
+                        Style="{StaticResource DefaultSlider}"/>
                
             </Grid>
             <Grid Grid.Row="2" Height="30" Width="260">
@@ -78,7 +79,8 @@
                         TickFrequency = "1"
                         Foreground ="#FF696969"
                         Focusable="False"
-                        TickPlacement ="BottomRight" Grid.ColumnSpan="2"/>
+                        TickPlacement ="BottomRight" Grid.ColumnSpan="2"
+                        Style="{StaticResource DefaultSlider}"/>
                
             </Grid>
             <Grid Grid.Row="4" Height="30" Width="260">
@@ -106,7 +108,8 @@
                         TickFrequency = "1"
                         Foreground ="#FF696969"
                         Focusable="False"
-                        TickPlacement ="BottomRight" Grid.ColumnSpan="2"/>
+                        TickPlacement ="BottomRight" Grid.ColumnSpan="2"
+                        Style="{StaticResource DefaultSlider}"/>
                 
             </Grid>
             <Grid Grid.Row="6" Height="30" Width="260">
@@ -135,7 +138,8 @@
                         
                         Foreground ="#FF696969"
                         Focusable="False"
-                        TickPlacement ="BottomRight"/>
+                        TickPlacement ="BottomRight"
+                        Style="{StaticResource DefaultSlider}"/>
              
             </Grid>
             <Grid Grid.Row="8" Height="30" Width="260">
@@ -151,7 +155,8 @@
                 </Grid.ColumnDefinitions>
                 <mah:RangeSlider x:Name="SliderRange"
                                  Height="40"
-                                 Width="200"   
+                                 Width="200"
+                                 Style="{StaticResource DefaultRangeSlider}"
                                  MinRange="1"
                                  HorizontalAlignment="Center"
                                  VerticalAlignment="Center"
@@ -161,13 +166,10 @@
                                  Minimum="5" Maximum="10"
                                  TickPlacement="BottomRight"
                                  AutoToolTipPlacement="TopLeft"
-                                 LowerValue="{Binding LowerNumberRangeRandom}" UpperValue="{Binding UpperNumberRangeRandom}"
+                                 LowerValue="{Binding LowerNumberRangeRandom}" 
+                                 UpperValue="{Binding UpperNumberRangeRandom}"
                                  >
-
-
                 </mah:RangeSlider>
-
-
             </Grid>
         </Grid>
     </Grid>

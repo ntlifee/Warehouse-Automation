@@ -12,11 +12,6 @@ namespace WarehouseAutomation.MVVM.Models
     /// </summary>
     public class Statistics : BindableBase
     {
-        //public Statistics(uint NumberDays, uint TotalApplications, uint CompletedApplications, uint RejectedApplications, uint WarehouseProfit, uint WarehouseLosses)
-        //{
-                
-        //}
-
         /// <summary>
         /// День моделирования
         /// </summary>
@@ -37,14 +32,5 @@ namespace WarehouseAutomation.MVVM.Models
         /// Прибыль склада
         /// </summary>
         public int WarehouseProfit { get; set; }
-
-        public void DefaultStatistics()
-        {
-            NumberDays = 0;
-            TotalApplications = 0;
-            CompletedApplications = 0;
-            RejectedApplications = 0;
-            WarehouseProfit = 0;
-        }
     }
 }

@@ -10,13 +10,13 @@ namespace WarehouseAutomation.MVVM.Models
     /// <summary>
     /// Продукты
     /// </summary>
-    public class Product
+    public class ProductParameter
     {
-        public Product()
+        public ProductParameter()
         {
                 
         }
-        public Product(byte volume, uint priceBuy, uint priceSell, DateTime expirationDate)
+        public ProductParameter(byte volume, uint priceBuy, uint priceSell, DateTime expirationDate)
         {
             Volume = volume;
             PriceBuy = priceBuy;

@@ -12,19 +12,6 @@ namespace WarehouseAutomation.MVVM.Models
     /// </summary>
     public class Settings : BindableBase
     {
-        public Settings()
-        {
-                
-        }
-        public Settings(int numberTypesProducts, int numberStores, int numberSimulationDays, int storageCapacityProduct, int lowerNumberRangeRandom, int upperNumberRangeRandom)
-        {
-            NumberTypesProducts = numberTypesProducts;
-            NumberStores = numberStores;
-            NumberSimulationDays = numberSimulationDays;
-            StorageCapacityProduct = storageCapacityProduct;
-            LowerNumberRangeRandom = lowerNumberRangeRandom;
-            UpperNumberRangeRandom = upperNumberRangeRandom;
-        }
         /// <summary>
         /// Количество видов продуктов 
         /// </summary>

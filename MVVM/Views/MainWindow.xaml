@@ -38,14 +38,14 @@
                             VerticalAlignment="Center"
                             Margin="5,0,5,0" 
                             Click="ButtonCollapse_Click" 
-                            Style="{DynamicResource DefaultButtonStyle}"/>
+                            Style="{StaticResource DefaultButtonStyle}"/>
                     <Button x:Name="ButtonClose" 
                             Content="X" 
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Margin="5,0,5,0" 
                             Click="ButtonClose_Click" 
-                            Style="{DynamicResource DefaultButtonStyle}"/>
+                            Style="{StaticResource DefaultButtonStyle}"/>
                 </StackPanel>
             </Grid>
 
@@ -89,8 +89,18 @@
                                                 HorizontalAlignment="Right" 
                                                 Width="50"
                                                 Margin="0 0 10 0" 
-                                                VerticalAlignment="Center" 
-                                                Style="{DynamicResource DefaultButtonStyle}"/>
+                                                VerticalAlignment="Center"                                                 >
+                                            <Button.Style>
+                                                <Style BasedOn="{StaticResource DefaultButtonStyle}" TargetType="Button">
+                                                    <Setter Property="IsEnabled" Value="True"></Setter>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding IsTestingStart}" Value="True">
+                                                            <Setter Property="IsEnabled" Value="False"></Setter>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Button.Style>
+                                        </Button>
                                     </Grid>
                                     <Grid Grid.Column="2" Height="30" Width="150">
                                         <Button x:Name="ButtonStopSimul" 
@@ -99,8 +109,18 @@
                                                 HorizontalAlignment="Left" 
                                                 Width="50"
                                                 Margin="10,0,0,5" 
-                                                VerticalAlignment="Bottom" 
-                                                Style="{DynamicResource DefaultButtonStyle}"/>
+                                                VerticalAlignment="Bottom">
+                                            <Button.Style>
+                                                <Style BasedOn="{StaticResource DefaultButtonStyle}" TargetType="Button">
+                                                    <Setter Property="IsEnabled" Value="False"></Setter>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding IsTestingStart}" Value="true">
+                                                            <Setter Property="IsEnabled" Value="True"></Setter>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Button.Style>
+                                        </Button>
                                     </Grid>
                                 </Grid>
                             </Border>

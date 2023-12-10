@@ -18,14 +18,16 @@ namespace WarehouseAutomation.MVVM.Models
     public class Manager : BindableBase
     {
         public Statistics Statistics { get; set; }
+        public bool IsTestingStart { get; private set; }
         public Settings Settings { get; set; }
+        public ObservableCollection<string> Logs { get; set; }
+        public ICommand StartCommand { get; }
+        public ICommand StopCommand { get; }
+        
         private List<RetailOutlets> _retailOutlets;
         private Warehouse _warehouse;
         private DispatcherTimer _timer;
         private List<string> _nameProduct;
-        public ICommand StartCommand { get; }
-        public ICommand StopCommand { get; }
-        public ObservableCollection<string> Logs { get; set; }
         private Random _random;
         public Manager()
         {
@@ -55,23 +57,24 @@ namespace WarehouseAutomation.MVVM.Models
                 "Кофе"
             };
             Settings = new Settings();
-            Statistics = new Statistics();
             Logs = new ObservableCollection<string>();
-            _random = new Random();
-            _warehouse = Warehouse();
+            _random = new Random();            
             _timer = new DispatcherTimer();       
         }
         public void TimerStart()
         {
-            Statistics.DefaultStatistics();
+            IsTestingStart = true;
+            Statistics = new Statistics();
             _retailOutlets = RetailOutlets();
+            _warehouse = Warehouse();
             Logs.Clear();
             _timer.Tick += new EventHandler(dispatcherTimer_Tick);
             _timer.Interval = new TimeSpan(0, 0, 1);
             _timer.Start();
         }
         public void TimerStop()
-        {            
+        {
+            IsTestingStart = false;
             _timer.Tick -= new EventHandler(dispatcherTimer_Tick);
             _timer.Stop();
         }
@@ -111,13 +114,13 @@ namespace WarehouseAutomation.MVVM.Models
         public Warehouse Warehouse()
         {
             Warehouse warehouse = new Warehouse(Settings, Statistics);
-            warehouse.Products = new Dictionary<string, List<Product>>();
+            warehouse.Products = new Dictionary<string, List<ProductParameter>>();
             List<string> TempProduct = new List<string>(_nameProduct);
             int idx;
             for (int i = 0; i < Settings.NumberTypesProducts; i++)
             {
                 idx = _random.Next(0, TempProduct.Count);
-                warehouse.Products.Add(TempProduct[idx], new List<Product>());
+                warehouse.Products.Add(TempProduct[idx], new List<ProductParameter>());
                 TempProduct.RemoveAt(idx);
             }
             warehouse.OrderingProductsWarehouse();

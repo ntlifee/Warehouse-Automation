@@ -96,7 +96,7 @@
     </Compile>
     <Compile Include="MVVM\Models\Applications.cs" />
     <Compile Include="MVVM\Models\Manager.cs" />
-    <Compile Include="MVVM\Models\Product.cs" />
+    <Compile Include="MVVM\Models\ProductParameter.cs" />
     <Compile Include="MVVM\Models\RetailOutlets.cs" />
     <Compile Include="MVVM\Models\Settings.cs" />
     <Compile Include="MVVM\Models\Statistics.cs" />
@@ -117,7 +117,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resource\ResourceButton.xaml">
+    <Page Include="Resource\Resource.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,10 +1,5 @@
-﻿using ControlzEx.Standard;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WarehouseAutomation.Properties;
 
 namespace WarehouseAutomation.MVVM.Models
 {
@@ -12,13 +7,13 @@ namespace WarehouseAutomation.MVVM.Models
     {
         private Settings _settings;
         private Statistics _statistics;
-        private Random Random;
+        private Random _random;
         public Warehouse(Settings settings, Statistics statisticsDay)
-        {
+        {            
             _settings = settings;
-            _statistics = statisticsDay;
+            _statistics = statisticsDay;            
+            _random = new Random();
             CapacityWarehouse = _settings.StorageCapacityProduct;
-            Random = new Random();
         }
         /// <summary>
         /// Вместимость склада по видим продукта 
@@ -27,16 +22,16 @@ namespace WarehouseAutomation.MVVM.Models
         /// <summary>
         /// Key - тип продукта, Value - список продуктов
         /// </summary>
-        public Dictionary<string, List<Product>> Products { get; set; }
+        public Dictionary<string, List<ProductParameter>> Products { get; set; }
         /// <summary>
         /// Обработка заявки
         /// </summary>
         /// <param name="application">Заявка</param>
-        public Dictionary<string, List<Product>> ApplicationProcessing(Applications application)
+        public Dictionary<string, List<ProductParameter>> ApplicationProcessing(Applications application)
         {
             _statistics.TotalApplications++;
-            Dictionary<string, List<Product>> products = new Dictionary<string, List<Product>>();
-            if (Random.Next(0, 10) <= 8)
+            Dictionary<string, List<ProductParameter>> products = new Dictionary<string, List<ProductParameter>>();
+            if (_random.Next(0, 10) <= 8)
             {
                 _statistics.CompletedApplications++;
                 foreach (var product in application.Products)
@@ -45,12 +40,12 @@ namespace WarehouseAutomation.MVVM.Models
                     {
                         if (Products[product.Key].Count < product.Value)
                         {
-                            products[product.Key] = new List<Product>(Products[product.Key]);
+                            products[product.Key] = new List<ProductParameter>(Products[product.Key]);
                             Products[product.Key].Clear();
                         }
                         else
                         {
-                            products[product.Key] = new List<Product>(Products[product.Key].GetRange(Products[product.Key].Count - product.Value, product.Value));
+                            products[product.Key] = new List<ProductParameter>(Products[product.Key].GetRange(Products[product.Key].Count - product.Value, product.Value));
                             Products[product.Key].RemoveRange(Products[product.Key].Count - product.Value, product.Value);
                         }                        
                         foreach (var item in products[product.Key])
@@ -76,18 +71,18 @@ namespace WarehouseAutomation.MVVM.Models
             {
                 if (product.Value.Count < 30)
                 {
-                    Price = Convert.ToUInt32(Random.Next(_settings.LowerNumberRangeRandom, _settings.UpperNumberRangeRandom)
-                            * Random.Next(_settings.LowerNumberRangeRandom, _settings.UpperNumberRangeRandom)
-                            * Random.Next(_settings.LowerNumberRangeRandom, _settings.UpperNumberRangeRandom));
+                    Price = Convert.ToUInt32(_random.Next(_settings.LowerNumberRangeRandom, _settings.UpperNumberRangeRandom)
+                            * _random.Next(_settings.LowerNumberRangeRandom, _settings.UpperNumberRangeRandom)
+                            * _random.Next(_settings.LowerNumberRangeRandom, _settings.UpperNumberRangeRandom));
                     for (int i = product.Value.Count; i < CapacityWarehouse; i++)
                     {                        
                         product.Value.Add(
-                        new Product
+                        new ProductParameter
                         (
-                            (byte)Random.Next(_settings.LowerNumberRangeRandom, _settings.UpperNumberRangeRandom),
+                            (byte)_random.Next(_settings.LowerNumberRangeRandom, _settings.UpperNumberRangeRandom),
                             Price,
                             Convert.ToUInt32(Price * 1.1),
-                            DateTime.Now.AddDays(Random.Next(_settings.LowerNumberRangeRandom + 10, _settings.UpperNumberRangeRandom + 10)))
+                            DateTime.Now.AddDays(_random.Next(_settings.LowerNumberRangeRandom + 10, _settings.UpperNumberRangeRandom + 10)))
                         );
                     }                    
                 }
