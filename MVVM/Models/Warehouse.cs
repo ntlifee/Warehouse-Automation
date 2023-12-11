@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.Mvvm.Native;
+using System;
 using System.Collections.Generic;
 
 namespace WarehouseAutomation.MVVM.Models
@@ -22,33 +23,34 @@ namespace WarehouseAutomation.MVVM.Models
         /// <summary>
         /// Key - тип продукта, Value - список продуктов
         /// </summary>
-        public Dictionary<string, List<ProductParameter>> Products { get; set; }
+        public List<Product> Products { get; set; }
         /// <summary>
         /// Обработка заявки
         /// </summary>
         /// <param name="application">Заявка</param>
-        public Dictionary<string, List<ProductParameter>> ApplicationProcessing(Applications application)
+        public List<Product> ApplicationProcessing(Applications application)
         {
             _statistics.TotalApplications++;
-            Dictionary<string, List<ProductParameter>> products = new Dictionary<string, List<ProductParameter>>();
+            List<Product> products = new List<Product>();
             if (_random.Next(0, 10) <= 8)
             {
-                _statistics.CompletedApplications++;
+                _statistics.CompletedApplications++;                
                 foreach (var product in application.Products)
                 {
-                    if (Products.ContainsKey(product.Key))
+                    int idx = Products.FindIndex(x => x.Name == product.Key);
+                    if (idx != -1)
                     {
-                        if (Products[product.Key].Count < product.Value)
+                        if (Products[idx].Parameters.Count < product.Value)
                         {
-                            products[product.Key] = new List<ProductParameter>(Products[product.Key]);
-                            Products[product.Key].Clear();
+                            products.Add(new Product(product.Key, new List<ProductParameter>(Products[idx].Parameters)));
+                            Products[idx].Parameters.Clear();
                         }
                         else
                         {
-                            products[product.Key] = new List<ProductParameter>(Products[product.Key].GetRange(Products[product.Key].Count - product.Value, product.Value));
-                            Products[product.Key].RemoveRange(Products[product.Key].Count - product.Value, product.Value);
+                            products.Add(new Product(product.Key, new List<ProductParameter>(Products[idx].Parameters.GetRange(Products[idx].Parameters.Count - product.Value, product.Value))));
+                            Products[idx].Parameters.RemoveRange(Products[idx].Parameters.Count - product.Value, product.Value);
                         }                        
-                        foreach (var item in products[product.Key])
+                        foreach (var item in products[products.Count - 1].Parameters)
                         {
                             _statistics.WarehouseProfit += (int)item.PriceSell - (int)item.PriceBuy;
                         }
@@ -69,14 +71,14 @@ namespace WarehouseAutomation.MVVM.Models
             uint Price;
             foreach (var product in Products)
             {
-                if (product.Value.Count < 30)
+                if (product.Parameters.Count < 30)
                 {
                     Price = Convert.ToUInt32(_random.Next(_settings.LowerNumberRangeRandom, _settings.UpperNumberRangeRandom)
                             * _random.Next(_settings.LowerNumberRangeRandom, _settings.UpperNumberRangeRandom)
                             * _random.Next(_settings.LowerNumberRangeRandom, _settings.UpperNumberRangeRandom));
-                    for (int i = product.Value.Count; i < CapacityWarehouse; i++)
+                    for (int i = product.Parameters.Count; i < CapacityWarehouse; i++)
                     {                        
-                        product.Value.Add(
+                        product.Parameters.Add(
                         new ProductParameter
                         (
                             (byte)_random.Next(_settings.LowerNumberRangeRandom, _settings.UpperNumberRangeRandom),
@@ -96,18 +98,18 @@ namespace WarehouseAutomation.MVVM.Models
             double days;
             foreach (var product in Products)
             {
-                for(int i = 0; i < product.Value.Count;i ++)
+                for(int i = 0; i < product.Parameters.Count;i ++)
                 {
                     //days = product.Value[i].ExpirationDate.CompareTo(DateTime.Now.AddDays(_statistics.NumberDays));
-                    days = (product.Value[i].ExpirationDate - DateTime.Now.AddDays(_statistics.NumberDays)).TotalDays;
+                    days = (product.Parameters[i].ExpirationDate - DateTime.Now.AddDays(_statistics.NumberDays)).TotalDays;
                     if (days <= 0)
                     {
-                        _statistics.WarehouseProfit -= (int)product.Value[i].PriceBuy;
-                        product.Value.RemoveAt(i);
+                        _statistics.WarehouseProfit -= (int)product.Parameters[i].PriceBuy;
+                        product.Parameters.RemoveAt(i);
                     }
                     else if (days <= 5)
                     {
-                        product.Value[i].PriceSell -= Convert.ToUInt32(product.Value[i].PriceSell * 0.25);
+                        product.Parameters[i].PriceSell -= Convert.ToUInt32(product.Parameters[i].PriceSell * 0.25);
                     }
                 }
             }

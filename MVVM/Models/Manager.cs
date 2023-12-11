@@ -114,13 +114,13 @@ namespace WarehouseAutomation.MVVM.Models
         public Warehouse Warehouse()
         {
             Warehouse warehouse = new Warehouse(Settings, Statistics);
-            warehouse.Products = new Dictionary<string, List<ProductParameter>>();
+            warehouse.Products = new List<Product>();
             List<string> TempProduct = new List<string>(_nameProduct);
             int idx;
             for (int i = 0; i < Settings.NumberTypesProducts; i++)
             {
                 idx = _random.Next(0, TempProduct.Count);
-                warehouse.Products.Add(TempProduct[idx], new List<ProductParameter>());
+                warehouse.Products.Add(new Product(TempProduct[idx], new List<ProductParameter>()));
                 TempProduct.RemoveAt(idx);
             }
             warehouse.OrderingProductsWarehouse();
