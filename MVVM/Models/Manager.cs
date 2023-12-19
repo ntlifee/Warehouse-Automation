@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Web.WebSockets;
 using System.Windows.Input;
 using System.Windows.Threading;
+using WarehouseAutomation.MVVM.Models.Interfaces;
 
 namespace WarehouseAutomation.MVVM.Models
 {
@@ -24,11 +25,13 @@ namespace WarehouseAutomation.MVVM.Models
         public ICommand StartCommand { get; }
         public ICommand StopCommand { get; }
         
-        private List<RetailOutlets> _retailOutlets;
-        private Warehouse _warehouse;
+        private List<IRetailOutlets> _retailOutlets;
+        private IWarehouse _warehouse;
         private DispatcherTimer _timer;
         private List<string> _nameProduct;
         private Random _random;
+        private ICreateWarehouse _createWarehouse;
+        private ICreateRetailOutlets _createRetailOutlets;
         public Manager()
         {
             StartCommand = new DelegateCommand(() => TimerStart());
@@ -59,14 +62,16 @@ namespace WarehouseAutomation.MVVM.Models
             Settings = new Settings();
             Logs = new ObservableCollection<string>();
             _random = new Random();            
-            _timer = new DispatcherTimer();       
+            _timer = new DispatcherTimer();
+            _createWarehouse = new CreateWarehouse();
+            _createRetailOutlets = new CreateRetailOutlets();
         }
         public void TimerStart()
         {
             IsTestingStart = true;
             Statistics = new Statistics();
-            _retailOutlets = RetailOutlets();
-            _warehouse = Warehouse();
+            _retailOutlets = _createRetailOutlets.RetailOutlets(Settings, _nameProduct);
+            _warehouse = _createWarehouse.Warehouse(Settings, Statistics, _nameProduct);
             Logs.Clear();
             _timer.Tick += new EventHandler(dispatcherTimer_Tick);
             _timer.Interval = new TimeSpan(0, 0, 1);
@@ -90,53 +95,22 @@ namespace WarehouseAutomation.MVVM.Models
             _warehouse.OrderingProductsWarehouse();
             Logs.Add($"     Склад выполнил заказ недостающих продуктов.");
             int countApplication = _random.Next(_retailOutlets.Count / 2, _retailOutlets.Count);
-            List<RetailOutlets> temp_retailOutlets = new List<RetailOutlets>(_retailOutlets);
+            List<IRetailOutlets> temp_retailOutlets = new List<IRetailOutlets>(_retailOutlets);
             int numberRetailOutlets;
             for (int i = 0; i < countApplication; i++)
             {
                 numberRetailOutlets = _random.Next(0, temp_retailOutlets.Count - 1);                
                 //вывод сообщения, что магазин сделал заказ
-                Logs.Add($"     {temp_retailOutlets[numberRetailOutlets].Name} сделал заказ.");
+                Logs.Add($"     {temp_retailOutlets[numberRetailOutlets].GetName()} сделал заказ.");
                 _warehouse.ApplicationProcessing(temp_retailOutlets[numberRetailOutlets].PreparationApplication());
                 //вывод сообщения, что склад выполнил заказ
-                Logs.Add($"     Склад выполнил заказ для {temp_retailOutlets[numberRetailOutlets].Name}.");
+                Logs.Add($"     Склад выполнил заказ для {temp_retailOutlets[numberRetailOutlets].GetName()}.");
                 temp_retailOutlets.RemoveAt(numberRetailOutlets);
             }           
             if (Statistics.NumberDays == Settings.NumberSimulationDays)
             {
                 TimerStop();
             }
-        }
-
-        /// <summary>
-        /// Занесение типов продуктов на склад и его пополнение 
-        /// </summary>
-        public Warehouse Warehouse()
-        {
-            Warehouse warehouse = new Warehouse(Settings, Statistics);
-            warehouse.Products = new List<Product>();
-            List<string> TempProduct = new List<string>(_nameProduct);
-            int idx;
-            for (int i = 0; i < Settings.NumberTypesProducts; i++)
-            {
-                idx = _random.Next(0, TempProduct.Count);
-                warehouse.Products.Add(new Product(TempProduct[idx], new List<ProductParameter>()));
-                TempProduct.RemoveAt(idx);
-            }
-            warehouse.OrderingProductsWarehouse();
-            return warehouse;
-        }
-        /// <summary>
-        /// Создание магазинов
-        /// </summary>
-        public List<RetailOutlets> RetailOutlets()
-        {
-            List<RetailOutlets> retailOutlets = new List<RetailOutlets>();
-            for (int i = 1; i <= Settings.NumberStores; i++)
-            {
-                retailOutlets.Add(new RetailOutlets($"Магазин #{i}", _nameProduct, Settings));
-            }
-            return retailOutlets;
         }
     }
 }

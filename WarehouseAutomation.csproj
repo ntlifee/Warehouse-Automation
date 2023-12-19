@@ -95,6 +95,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MVVM\Models\Applications.cs" />
+    <Compile Include="MVVM\Models\CreateRetailOutlets.cs" />
+    <Compile Include="MVVM\Models\CreateWarehouse.cs" />
+    <Compile Include="MVVM\Models\Interfaces\ICreateRetailOutlets.cs" />
+    <Compile Include="MVVM\Models\Interfaces\ICreateWarehouse.cs" />
+    <Compile Include="MVVM\Models\Interfaces\IRetailOutlets.cs" />
+    <Compile Include="MVVM\Models\Interfaces\IWarehouse.cs" />
     <Compile Include="MVVM\Models\Manager.cs" />
     <Compile Include="MVVM\Models\Product.cs" />
     <Compile Include="MVVM\Models\ProductParameter.cs" />

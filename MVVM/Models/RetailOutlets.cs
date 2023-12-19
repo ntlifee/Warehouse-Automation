@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Navigation;
+using WarehouseAutomation.MVVM.Models.Interfaces;
 
 namespace WarehouseAutomation.MVVM.Models
 {
     /// <summary>
     /// Торговые точки 
     /// </summary>
-    public class RetailOutlets
-    {        
+    public class RetailOutlets : IRetailOutlets
+    {
         public RetailOutlets(string name, List<string> nameProduct, Settings settings)
         {
             Name = name;
@@ -19,6 +21,10 @@ namespace WarehouseAutomation.MVVM.Models
         /// Название магазина
         /// </summary>
         public string Name { get; set; }
+        public string GetName()
+        {
+            return Name;
+        }
         /// <summary>
         /// Виды доступных для заказа продуктов
         /// </summary>

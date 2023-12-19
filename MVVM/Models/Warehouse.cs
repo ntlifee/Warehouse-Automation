@@ -1,10 +1,11 @@
 ﻿using DevExpress.Mvvm.Native;
 using System;
 using System.Collections.Generic;
+using WarehouseAutomation.MVVM.Models.Interfaces;
 
 namespace WarehouseAutomation.MVVM.Models
 {
-    public class Warehouse
+    public class Warehouse : IWarehouse
     {
         private Settings _settings;
         private Statistics _statistics;
